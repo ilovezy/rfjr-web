@@ -10,52 +10,38 @@ export default [
     children: [{
       path: '/myAccount',
       component: () => import('@/views/myAccount/myAccountPage'),
-      redirect: '/myAccount/overview',
+      redirect: '/myAccount/account',
       name: 'myAccountPage',
       meta: {
         title: '我的账户',
       },
       children: [{
-        path: 'overview',
-        component: () => import('@/views/myAccount/sections/overview'),
-        name: 'overview',
+        path: 'account',
+        component: () => import('@/views/myAccount/sections/account'),
+        name: 'account',
         meta: {
-          title: '账户概览',
+          title: '我的主页',
         },
       },{
-        path: 'lendRecord',
-        component: () => import('@/views/myAccount/sections/lendRecord'),
-        name: 'lendRecord',
+        path: 'realName',
+        component: () => import('@/views/myAccount/sections/realName'),
+        name: 'realName',
         meta: {
-          title: '出借记录',
+          title: '实名认证',
         },
       },{
-        path: 'myRedPackage',
-        component: () => import('@/views/myAccount/sections/myRedPackage'),
-        name: 'myRedPackage',
+        path: 'openAccount',
+        component: () => import('@/views/myAccount/sections/openAccount'),
+        name: 'openAccount',
         meta: {
-          title: '我的红包',
+          title: '在线开户',
         },
       },{
-        path: 'inviteReward',
-        component: () => import('@/views/myAccount/sections/inviteReward'),
-        name: 'inviteReward',
+        path: 'bindBankCard',
+        component: () => import('@/views/myAccount/sections/bindBankCard'),
+        name: 'bindBankCard',
         meta: {
-          title: '邀请奖励',
-        },
-      },{
-        path: 'moneyRecord',
-        component: () => import('@/views/myAccount/sections/moneyRecord'),
-        name: 'moneyRecord',
-        meta: {
-          title: '资金记录',
-        },
-      },{
-        path: 'accountSetting',
-        component: () => import('@/views/myAccount/sections/accountSetting'),
-        name: 'accountSetting',
-        meta: {
-          title: '账号设置',
+          title: '绑定银行卡',
         },
       },]
     }]

@@ -35,7 +35,7 @@
   .top-action-bar {
     height: 50px;
     line-height: 50px;
-    background: orange;
+    background: #f5f8ff;
 
     .top-action-bar-wrap {
       @include flex-between();

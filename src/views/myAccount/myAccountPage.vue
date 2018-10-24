@@ -37,7 +37,9 @@
 <style rel="stylesheet/scss"
        lang="scss">
   .my-account-page {
+    height: 100%;
     .my-account-page-wrap {
+      height: 100%;
       display: flex;
       justify-content: space-between;
       .left-nav {
