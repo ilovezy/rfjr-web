@@ -1,0 +1,65 @@
+@import './variables.scss';
+@import "./mixin";
+[v-cloak] {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  font-size: 0;
+  display: inline-block;
+}
+
+.text-primary {
+  color: #409EFF;
+}
+
+.text-success {
+  color: #67C23A;
+}
+
+.text-warning {
+  color: #E6A23C;
+}
+
+.text-danger {
+  color: #F56C6C;
+}
+
+.text-info {
+  color: #909399;
+}
+
+.text-main {
+  color: #303133;
+}
+
+.text-normal {
+  color: #606266;
+}
+
+.text-sub {
+  color: #909399;
+}
+
+.text-placeholder {
+  color: #C0C4CC;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.global-container {
+  width: 1200px;
+  margin: 0 auto;
+}

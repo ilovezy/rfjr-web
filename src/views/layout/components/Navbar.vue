@@ -1,0 +1,91 @@
+<template>
+  <div class='navbar '>
+    <div class='navbar-wrap global-container'>
+      <div class='logo'>
+        <img src='./img/logo.png'
+             alt=''>
+      </div>
+
+      <div class='nav-list'>
+        <router-link class='nav-list-item'
+                     to="/index">
+          首页
+        </router-link>
+        <router-link class='nav-list-item'
+                     to="/product">
+          我要出借
+        </router-link>
+        <router-link class='nav-list-item'
+                     to="/infoDisclosure">
+          信息披露
+        </router-link>
+        <router-link class='nav-list-item'
+                     to="/safetyGuarantee">
+          安全保障
+        </router-link>
+        <router-link class='nav-list-item item-my-account'
+                     to="/myAccount">
+          我的账户
+        </router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { mapGetters } from 'vuex'
+
+  export default {
+    components: {},
+    computed: {
+      ...mapGetters([
+        'sidebar'
+      ])
+    },
+    data() {
+      return {
+        isTestEnv: window.CurrentEnv == 'development'
+      }
+    },
+    methods: {}
+  }
+</script>
+
+<style rel="stylesheet/scss"
+       lang="scss"
+       scoped>
+  @import "src/styles/mixin.scss";
+
+  .navbar {
+    border-bottom: 1px solid #e2e2e2;
+    height: 80px;
+    line-height: 80px;
+
+    .navbar-wrap {
+      @include flex-between;
+      overflow: hidden;
+      height: 100%;
+
+      .nav-list {
+        height: 100%;
+        .nav-list-item {
+          display: inline-block;
+          padding: 0 20px;
+          box-sizing: border-box;
+          height: 100%;
+          &.router-link-exact-active {
+            border-bottom: 3px solid red;
+          }
+
+
+          &.item-my-account {
+            margin-left: 80px;
+            &.router-link-active {
+              border-bottom: 3px solid red;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
