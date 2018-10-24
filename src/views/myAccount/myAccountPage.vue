@@ -44,7 +44,6 @@
       justify-content: space-between;
       .left-nav {
         width: 220px;
-        height: 400px;
         display: inline-block;
         border-right: 1px solid #e2e2e2;
         box-sizing: border-box;

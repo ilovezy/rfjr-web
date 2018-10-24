@@ -54,9 +54,11 @@
 
   .app-main {
     /*84 = navbar + tags-view = 50 +34 TODO top-action-bar + navbar + appFooter */
-    min-height: calc(100vh - 130px);
+    /*min-height: calc(100vh - 130px);*/
+    height: calc(100vh - 130px);
     position: relative;
     overflow: hidden;
+    overflow-y: auto;
     /*top: 84px;*/
   }
 </style>

@@ -104,7 +104,7 @@
 
     .left-nav-list {
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
       .nav-list-title {
         display: block;
         padding: 15px;
