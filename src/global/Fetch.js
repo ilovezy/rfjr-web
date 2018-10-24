@@ -2,7 +2,7 @@
  * Created by ymjdev on 2017/9/20.
  */
 import axios from 'axios'
-import { Message } from 'element-ui'
+import {Message} from 'element-ui'
 import './CONFIG'
 import USER from './USER'
 
@@ -17,8 +17,18 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(config => {
-  const Version = CONFIG.serviceParam.Version
-  config.headers.Version = Version
+  let clientName = CONFIG.serviceParam.clientName
+  let clientSecret = CONFIG.serviceParam.clientSecret
+
+  if (config.data) {
+    config.data.clientName = clientName
+    config.data.clientSecret = clientSecret
+  } else {
+    config.data = {
+      clientName,
+      clientSecret
+    }
+  }
   const token = USER.getToken()
   if (token) {
     config.headers.Authorization = 'Bearer ' + token
@@ -75,33 +85,22 @@ instance.interceptors.response.use(res => {
 
 const postRequest = (url, params = {}) => {
   if (url) {
-    let setting = {}
-    if (params.postType == 'old') {
-      setting = {
-        method: 'post',
-        url,
-        data: params,
-        transformRequest: [function(data) {
-          let ret = ''
-          for (const item in data) {
-            ret += encodeURIComponent(item) + '=' + encodeURIComponent(data[item]) + '&'
-          }
-          return ret
-        }],
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    let setting = {
+      method: 'post',
+      url,
+      data: params,
+      transformRequest: [function (data) {
+        let ret = ''
+        for (const item in data) {
+          ret += encodeURIComponent(item) + '=' + encodeURIComponent(data[item]) + '&'
         }
-      }
-    } else {
-      setting = {
-        method: 'post',
-        url,
-        data: params,
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8'
-        }
+        return ret
+      }],
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     }
+
     return instance(setting)
   } else {
     Message.error({
@@ -124,7 +123,7 @@ const putRequest = (url, params) => {
     method: 'put',
     url,
     data: params,
-    transformRequest: [function(data) {
+    transformRequest: [function (data) {
       let ret = ''
       for (const item in data) {
         ret += encodeURIComponent(item) + '=' + encodeURIComponent(data[item]) + '&'

@@ -6,10 +6,11 @@
       </div>
 
       <div class='right'>
-        <router-link to='/login' class='item'>请登录- 注册</router-link>
-        <router-link to='/inviteFriend' class='item'>邀请好友</router-link>
+        <router-link to='/login' class='item'>登录</router-link>
+        <router-link to='/register' class='item'>注册</router-link>
+        <!--<router-link to='/inviteFriend' class='item'>邀请好友</router-link>-->
         <!--<router-link to='/helpCenter' class='item'>帮助中心</router-link>-->
-        <span class='item'>关注我们</span>
+        <!--<span class='item'>关注我们</span>-->
       </div>
     </div>
   </div>

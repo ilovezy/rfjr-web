@@ -2,8 +2,9 @@
   <div class='navbar '>
     <div class='navbar-wrap global-container'>
       <div class='logo'>
-        <img src='./img/logo.png'
-             alt=''>
+        <!--<img src='./img/logo.png'-->
+             <!--alt=''>-->
+        日发金融
       </div>
 
       <div class='nav-list'>
@@ -25,7 +26,7 @@
         </router-link>
         <router-link class='nav-list-item item-my-account'
                      to="/myAccount">
-          我的账户
+          个人中心
         </router-link>
       </div>
     </div>
@@ -65,6 +66,10 @@
       @include flex-between;
       overflow: hidden;
       height: 100%;
+
+      .logo {
+        font-size: 36px;
+      }
 
       .nav-list {
         height: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div class="left-nav">
-    <h1>left nav bar</h1>
+    <!--<h1>left nav bar</h1>-->
     <div class='left-nav-list'>
       <router-link class='nav-list-item'
                    to="/myAccount/overview">

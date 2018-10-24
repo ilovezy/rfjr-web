@@ -40,7 +40,7 @@ window.isValidTransactionPwd = function (str) {
 
 // 检测密码 6-16位密码必须字母+数字
 window.isValidPassword = function (str) {
-  return /^(?![^a-zA-Z]+$)(?!\D+$)(?!^[_#@]+$).{6,16}/.test(str)
+  return /.{6,16}/.test(str)
 }
 
 // 检测输入的金额
