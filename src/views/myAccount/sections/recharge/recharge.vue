@@ -1,15 +1,12 @@
 <template>
-  <layout class="recharge-page user-form">
-    <navbar :large='true'
-            slot="navbar">
-      <span slot="center">我要入金</span>
-    </navbar>
+  <div>
     <div class='title'>
       我要入金
     </div>
 
     <div class='form-body'>
-      <div class='form-item' style='margin-bottom: 0.2rem;'>
+      <div class='form-item'
+           style='margin-bottom: 0.2rem;'>
         <input type='number'
                class='form-control'
                style='width: 100%;'
@@ -47,8 +44,9 @@
         </div>
         <div v-if='type == "bank_card"'
              class='bank-wrap'>
-          <div class='item'>户名：{{'fhc'}}</div>
-          <div class='item'>开户银行卡号：{{32131312321312}}</div>
+          <div class='item'>户名：王萃</div>
+          <div class='item'>开户银行：中国银行杭州文辉支行</div>
+          <div class='item'>开户银行卡号：6216696200004027992 </div>
         </div>
       </div>
     </div>
@@ -61,7 +59,7 @@
     <div class='btn btn-default btn-block'
          @click="goBack">支付遇到问题，关闭
     </div>
-  </layout>
+  </div>
 </template>
 <script>
   export default {
@@ -143,7 +141,7 @@
     }
 
     .form-body {
-      margin-top: 0.5rem!important;
+      margin-top: 0.5rem !important;
     }
 
     .select-pay-way-wrap {
@@ -180,7 +178,8 @@
         .bank-item {
           .bank-icon {
             display: inline-block;
-            width: 50px;         margin-right: 10px;
+            width: 50px;
+            margin-right: 10px;
           }
         }
       }
