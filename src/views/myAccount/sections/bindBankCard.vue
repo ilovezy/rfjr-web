@@ -94,6 +94,8 @@
           this.cardNo = res.cardNo
           this.trueName = res.trueName
           this.loading = false
+          this.$store.dispatch('UPDATE_USER_INFO', res)
+
         })
       },
       validForm() {

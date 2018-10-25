@@ -220,6 +220,8 @@
           this.identityNo = res.identityNo
           this.loading = false
           this.account = res.account
+          this.$store.dispatch('UPDATE_USER_INFO', res)
+
         })
       },
 

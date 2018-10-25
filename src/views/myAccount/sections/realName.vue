@@ -82,6 +82,8 @@
           this.trueName = res.trueName
           this.identityNo = res.identityNo
           this.loading = false
+          this.$store.dispatch('UPDATE_USER_INFO', res)
+
         })
       },
 

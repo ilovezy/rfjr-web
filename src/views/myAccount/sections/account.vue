@@ -25,7 +25,6 @@
       </div>
     </div>
 
-    <div class='footer-container'></div>
   </div>
 </template>
 
@@ -47,59 +46,17 @@
 
     created() {
       this.getToken()
-
     },
     mounted() {
     },
 
     methods: {
+      testStore(){
+        this.$store.commit('increment')
+      },
       formatThousands: function (num) {
         return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
       },
-      goTarget(link, needBandCard) {
-        if (this.realNameFlag) {
-          if (needBandCard && !this.bindCardFlag) {
-            this.$dialog.confirm({
-              title: '提示',
-              mes: '<div style="line-height: 0.5rem">请先绑定银行卡再进行操作</div> ',
-              opts: [
-                {
-                  txt: '取消',
-                  color: false
-                },
-                {
-                  txt: '前往绑卡',
-                  color: true,
-                  callback: () => {
-                    this.$router.push('/bindBankCard')
-                  }
-                }
-              ]
-            })
-          } else {
-            this.$router.push(link)
-          }
-        } else {
-          this.$dialog.confirm({
-            title: '提示',
-            mes: '<div style="line-height: 0.5rem">请先实名认证再进行操作</div> ',
-            opts: [
-              {
-                txt: '取消',
-                color: false
-              },
-              {
-                txt: '前往实名',
-                color: true,
-                callback: () => {
-                  this.$router.push('/realName')
-                }
-              }
-            ]
-          })
-        }
-      },
-
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
@@ -121,6 +78,7 @@
           this.openAccountFlag = res.openAccountFlag
           this.realNameFlag = res.realNameFlag
           this.account = res.account
+          this.$store.dispatch('UPDATE_USER_INFO', res)
         })
       },
 

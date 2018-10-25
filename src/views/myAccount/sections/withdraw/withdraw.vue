@@ -82,6 +82,8 @@
           this.openAccountFlag = res.openAccountFlag
           this.realNameFlag = res.realNameFlag
           this.account = res.account
+          this.$store.dispatch('UPDATE_USER_INFO', res)
+
         })
       },
 
