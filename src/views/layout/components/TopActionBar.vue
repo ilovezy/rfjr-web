@@ -2,7 +2,7 @@
   <div class='top-action-bar'>
     <div class='top-action-bar-wrap global-container'>
       <div class='left'>
-        客服热线：400-150-8080 （工作日时间：8:00-20:00）
+        <!--客服热线：400-150-8080 （工作日时间：8:00-20:00）-->
       </div>
 
       <div class='right'>

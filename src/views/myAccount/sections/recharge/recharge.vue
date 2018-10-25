@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <div class='title'>
-      我要入金
+  <div class='recharge-part'>
+    <div class='info-item'
+         style='font-size: 30px;margin-bottom: 30px;'>我要入金
     </div>
-
-    <div class='form-body'>
-      <div class='form-item'
-           style='margin-bottom: 0.2rem;'>
-        <input type='number'
-               class='form-control'
-               style='width: 100%;'
-               maxlength="10"
-               placeholder="输入入金金额"
-               v-model.number="amount">
-      </div>
-      <p style='margin-bottom: 0.4rem;'>汇率：<span style='color: orangered;'>7.75</span></p>
-    </div>
+    <el-form ref="form"
+             label-width="80px">
+      <el-form-item label="入金金额" style='margin-bottom: 0;'>
+        <el-input-number v-model.number="amount"
+                         placeholder="输入入金金额"
+                         maxlength="10"
+                         controls-position="right"
+        ></el-input-number>
+      </el-form-item>
+      <el-form-item label="">
+        <p style='margin-bottom: 0.4rem;'>汇率：<span style='color: orangered;'>7.75</span></p>
+      </el-form-item>
+    </el-form>
 
     <div class='select-pay-way-wrap'>
       <div class='title-sm'>选择支付方式</div>
@@ -46,19 +46,13 @@
              class='bank-wrap'>
           <div class='item'>户名：王萃</div>
           <div class='item'>开户银行：中国银行杭州文辉支行</div>
-          <div class='item'>开户银行卡号：6216696200004027992 </div>
+          <div class='item'>开户银行卡号：6216696200004027992</div>
         </div>
       </div>
     </div>
-
-    <div class='btn btn-primary btn-block'
-         @click="validForm">我已经确认支付，确认
-    </div>
-
-
-    <div class='btn btn-default btn-block'
-         @click="goBack">支付遇到问题，关闭
-    </div>
+    <el-button type="primary"
+               @click="validForm">我已经确认支付，确认
+    </el-button>
   </div>
 </template>
 <script>
@@ -66,7 +60,11 @@
     data() {
       return {
         amount: '',
-        type: 'alipay'
+        type: 'alipay',
+        loading: '',
+        bindCardFlag: false,
+        openAccountFlag: false,
+        realNameFlag: false,
       }
     },
     created() {
@@ -79,30 +77,41 @@
       selectBank() {
         this.type = 'bank_card'
       },
-      goBack() {
-        this.$router.back()
-      },
 
       getToken() {
-        if (!USER.isLogin()) {
+        if (USER.isLogin()) {
+          this.getAccount()
+        } else {
           USER.logout()
           this.$router.push('/login')
         }
+      },
+      getAccount() {
+        AXIOS.post('/api/member/center').then(res => {
+          this.loading = false
+          this.availableBalance = res.availableBalance
+          this.balance = res.balance
+          this.bindCardFlag = res.bindCardFlag
+          this.name = res.name
+          this.openAccountFlag = res.openAccountFlag
+          this.realNameFlag = res.realNameFlag
+          this.account = res.account
+        })
       },
 
       validForm() {
         if (this.amount) {
           this.doConfirm()
         } else {
-          this.$dialog.toast({mes: '请输入入金金额'});
+          this.$message.warning('请输入入金金额');
         }
       },
 
       //提交注册
       doConfirm() {
         const self = this
-        this.$dialog.loading.open('入金中，请稍后...')
-        this.axios.post('/api/member/recharge', {
+        this.$message.warning('入金中，请稍后...')
+        AXIOS.post('/api/member/recharge', {
           amount: this.amount,
           type: this.type
         }).then(res => {
@@ -112,10 +121,7 @@
 
       registerSuccess(res) {
         if (res) {
-          this.$dialog.toast({mes: '入金成功'});
-          setTimeout(() => {
-            this.$router.replace('/account')
-          }, 1000)
+          this.$message.success('入金成功');
         }
       }
     }
@@ -126,20 +132,7 @@
        lang="scss"
        scoped>
 
-  .recharge-page {
-    .form-item-special {
-      transition: all 0.5s ease;
-      .pwd-icon {
-        width: 0.23rem;
-      }
-    }
-    .form-sm {
-      width: 1.5rem;
-    }
-    .btn-primary {
-      margin-top: 0.5rem;
-    }
-
+  .recharge-part {
     .form-body {
       margin-top: 0.5rem !important;
     }
@@ -152,9 +145,10 @@
 
       .pay-way-container {
         display: flex;
-        align-items: center;
+        padding-bottom: 15px;
         .alipay-item,
         .bank-item {
+          cursor: pointer;
           border: 1px solid #eee;
           display: flex;
           align-items: center;
@@ -187,12 +181,10 @@
     }
 
     .info-container {
-      height: 3rem;
-      margin-top: 0.5rem;
+      height: 200px;
       .qrcode {
-        width: 3rem;
-        height: 3rem;
-        margin: 0 auto;
+        width: 150px;
+        height: 150px;
       }
 
       .bank-wrap {

@@ -16,7 +16,8 @@
                      to="/download">
           软件下载
         </router-link>
-        <router-link class='nav-list-item item-my-account'
+        <!--<router-link class='nav-list-item item-my-account'-->
+        <router-link class='nav-list-item'
                      to="/myAccount">
           个人中心
         </router-link>
