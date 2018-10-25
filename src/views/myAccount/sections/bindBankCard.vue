@@ -19,6 +19,7 @@
 
         <div v-else>
           <div class='info-wrap'
+               style='margin-top: 30px; font-size: 20px;'
                v-if='bindCardFlag'>
             <div class='info-item'>
               <span class='label'>开户银行卡号:</span> {{cardNo}}
@@ -26,29 +27,30 @@
           </div>
 
           <div v-else>
-            <div class='form-body'
-                 style='margin-top: 1rem;'>
-              <div class='input-spe-wrap'>
-                <div class='label'
-                     style='margin-bottom: 0.5rem;'>户名: {{trueName}}
-                </div>
-              </div>
+            <el-form status-icon
+                     style='margin-top: 30px;'
+                     ref="ruleForm2"
+                     label-width="100px"
+                     class="demo-ruleForm">
+              <el-form-item label="户名"
+                            prop="trueName">
+                {{trueName}}
+              </el-form-item>
+              <el-form-item label="开户银行卡号"
+                            prop="trueName">
+                <el-input type="number"
+                          placeholder="请输入开户银行卡号"
+                          maxlength="10"
+                          v-model="cardNo"
+                          autocomplete="off"></el-input>
+              </el-form-item>
 
-              <div class='input-spe-wrap'>
-                <div class='label'
-                     style='margin-bottom: 0.5rem;'>开户银行卡号
-                </div>
-                <div class='form-item'>
-                  <input type="number"
-                         class='form-control'
-                         placeholder="请输入开户银行卡号"
-                         v-model="cardNo">
-                </div>
-              </div>
-            </div>
-            <div class='btn btn-primary btn-block'
-                 @click="validForm">确定
-            </div>
+              <el-form-item>
+                <el-button type="primary"
+                           @click="validForm">确定
+                </el-button>
+              </el-form-item>
+            </el-form>
           </div>
         </div>
       </div>
@@ -111,7 +113,7 @@
       },
 
       registerSuccess(res) {
-        this.$message.warning('绑卡成功！');
+        this.$message.success('绑卡成功！');
         setTimeout(() => {
           location.reload()
         }, 1000)
