@@ -5,7 +5,9 @@
     <div v-if='!loading'>
       <div class='info-wrap'
            v-if='realNameFlag'>
-        <div class='info-item' style='font-size: 30px;margin-bottom: 30px;'>实名认证成功！</div>
+        <div class='info-item'
+             style='font-size: 30px;margin-bottom: 30px;'>实名认证成功！
+        </div>
         <div class='info-item'>
           <span class='label'>真实姓名:</span> {{trueName}}
         </div>
@@ -15,15 +17,26 @@
       </div>
 
       <div v-else>
-        <el-form status-icon ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="真实姓名" prop="trueName">
-            <el-input type="text" v-model="trueName" autocomplete="off"></el-input>
+        <el-form status-icon
+                 ref="ruleForm2"
+                 label-width="100px"
+                 class="demo-ruleForm">
+          <el-form-item label="真实姓名"
+                        prop="trueName">
+            <el-input type="text"
+                      v-model="trueName"
+                      autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号码" prop="identityNo">
-            <el-input type="text" v-model="identityNo" autocomplete="off"></el-input>
+          <el-form-item label="身份证号码"
+                        prop="identityNo">
+            <el-input type="text"
+                      v-model="identityNo"
+                      autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="validForm">确定</el-button>
+            <el-button type="primary"
+                       @click="validForm">确定
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -108,13 +121,10 @@
 <style rel="stylesheet/scss"
        lang="scss"
        scoped>
-  .realName-part {
-    .info-wrap {
-
-      .info-item {
-        font-size: 20px;
-        margin-bottom: 15px;
-      }
+  .info-wrap {
+    .info-item {
+      font-size: 20px;
+      margin-bottom: 15px;
     }
   }
 </style>

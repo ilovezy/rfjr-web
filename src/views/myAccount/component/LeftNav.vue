@@ -76,8 +76,6 @@
        lang="scss"
        scoped>
   .left-nav {
-    padding: 15px;
-
     .left-nav-list {
       height: 100%;
       overflow-y: auto;
@@ -85,7 +83,8 @@
         display: block;
         padding: 15px;
         box-sizing: border-box;
-        background: #eaeaea;
+        background: #4fb7ea;
+        color: #fff;
       }
       .nav-list-item {
         display: block;

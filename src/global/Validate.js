@@ -27,6 +27,10 @@ window.isValidUserName = function (phone) {
   var tempPhone = Number(phone)
   return /^.{2,18}$/.test(tempPhone)
 }
+window.isValidCardNumber = function (str) {
+  return /^[1-9][0-9]{14,18}$/.test(str)
+}
+
 // 检测是否为正确的手机号码  国内手机号码格式
 window.isValidPhone = function (phone) {
   var tempPhone = Number(phone)
