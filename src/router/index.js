@@ -28,6 +28,15 @@ export const constantRouterMap = [
       name: 'registerPage',
       meta: { title: '注册'}
     }]
+  },{
+    path: '/download',
+    component: Layout,
+    children: [{
+      path: '',
+      component: () => import('@/views/download/download'),
+      name: 'download',
+      meta: { title: '软件下载'}
+    }]
   },
 
   { path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true },

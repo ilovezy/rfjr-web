@@ -3,7 +3,7 @@
     <div class='navbar-wrap global-container'>
       <div class='logo'>
         <!--<img src='./img/logo.png'-->
-             <!--alt=''>-->
+        <!--alt=''>-->
         日发金融
       </div>
 
@@ -13,16 +13,8 @@
           首页
         </router-link>
         <router-link class='nav-list-item'
-                     to="/product">
-          我要出借
-        </router-link>
-        <router-link class='nav-list-item'
-                     to="/infoDisclosure">
-          信息披露
-        </router-link>
-        <router-link class='nav-list-item'
-                     to="/safetyGuarantee">
-          安全保障
+                     to="/download">
+          软件下载
         </router-link>
         <router-link class='nav-list-item item-my-account'
                      to="/myAccount">
@@ -34,7 +26,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {},
@@ -81,7 +73,6 @@
           &.router-link-exact-active {
             border-bottom: 3px solid red;
           }
-
 
           &.item-my-account {
             margin-left: 80px;
