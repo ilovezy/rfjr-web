@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <h1 style='text-align: center;'>日發金融合约明细</h1>
+    <h1 style='text-align: center;'>日发金融合约明细</h1>
     <div style='padding: 15px 50px;'>
     <TABLE class='el-table el-table--fit el-table--border el-table--enable-row-hover el-table--enable-row-transition'>
       <TBODY>
@@ -1061,6 +1061,6 @@
        lang="scss"
        scoped>
   .spe-text {
-    color: deepskyblue;
+    color: #50adff;
   }
 </style>
