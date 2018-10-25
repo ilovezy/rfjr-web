@@ -4,7 +4,7 @@
       <div class='left'>
         <!--客服热线：400-150-8080 （工作日时间：8:00-20:00）-->
       </div>
-      <div class='right' v-if='logined && userInfo.name'>
+      <div class='right' v-if='userInfo.name'>
         <span>欢迎你: {{userInfo.name}}</span>
         <span @click='doLogout' style='margin-left: 30px;cursor: pointer;'>登出</span>
       </div>

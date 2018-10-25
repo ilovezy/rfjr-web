@@ -31,7 +31,6 @@
 <script>
 
   export default {
-    name: 'leftNav',
     data() {
       return {
         availableBalance: 0,
@@ -51,9 +50,6 @@
     },
 
     methods: {
-      testStore(){
-        this.$store.commit('increment')
-      },
       formatThousands: function (num) {
         return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
       },

@@ -9,16 +9,19 @@
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/realName">
-        实名认证
+        实名认证 <span v-if='userInfo.realNameFlag'
+                   class='iconfont icon-cces-Red-Iconfont-copy'></span>
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/openAccount">
-        在线开户
+        在线开户 <span v-if='userInfo.openAccountFlag'
+                   class='iconfont icon-cces-Red-Iconfont-copy'></span>
       </router-link>
 
       <router-link class='nav-list-item'
                    to="/myAccount/bindBankCard">
-        绑定银行卡
+        绑定银行卡 <span v-if='userInfo.bindCardFlag'
+                    class='iconfont icon-cces-Red-Iconfont-copy'></span>
       </router-link>
 
       <div class='nav-list-title'>我的资金</div>
@@ -45,14 +48,6 @@
                    to="changePassword">
         修改登录密码
       </router-link>
-      <!--<router-link class='nav-list-item'-->
-                   <!--to="/myAccount/realName">-->
-        <!--退出登录-->
-      <!--</router-link>-->
-      <!--<router-link class='nav-list-item'-->
-                   <!--to="/myAccount/openAccount">-->
-        <!--我要下载-->
-      <!--</router-link>-->
     </div>
   </div>
 </template>
@@ -61,6 +56,11 @@
 
   export default {
     name: 'leftNav',
+    computed: {
+      userInfo() {
+        return this.$store.state.user.userInfo
+      }
+    },
     data() {
       return {}
     },
@@ -91,6 +91,12 @@
         padding: 15px;
         box-sizing: border-box;
         border-left: 3px solid #fff;
+
+        .icon-cces-Red-Iconfont-copy {
+          color: green;
+          font-size: 14px;
+          margin-left: 15px;
+        }
         &.router-link-exact-active {
           border-left: 3px solid red;
         }
