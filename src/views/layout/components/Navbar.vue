@@ -13,6 +13,9 @@
           首页
         </router-link>
         <router-link class='nav-list-item'
+                     to="/dealDetail">
+          日发金融交易明细
+        </router-link>      <router-link class='nav-list-item'
                      to="/download">
           软件下载
         </router-link>

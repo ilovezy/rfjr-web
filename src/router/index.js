@@ -37,6 +37,15 @@ export const constantRouterMap = [
       name: 'download',
       meta: { title: '软件下载'}
     }]
+  },{
+    path: '/dealDetail',
+    component: Layout,
+    children: [{
+      path: '',
+      component: () => import('@/views/login/dealDetail'),
+      name: 'dealDetail',
+      meta: { title: '日发金融交易明细'}
+    }]
   },
 
   { path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true },
