@@ -6,7 +6,7 @@
       <div class='info-wrap'
            v-if='realNameFlag'>
         <div class='info-item'
-             style='font-size: 30px;margin-bottom: 30px;'>实名认证成功！
+             style='font-size: 30px;margin-bottom: 30px;'>实名认证<span v-if='realNameFlag'>成功</span>
         </div>
         <div class='info-item'>
           <span class='label'>真实姓名:</span> {{trueName}}

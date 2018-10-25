@@ -1,7 +1,7 @@
 <template>
   <div class="bindBankCard-part">
     <div class='title'>
-      绑定银行卡
+      绑定银行卡<span v-if='bindCardFlag'>成功</span>
       <p style='font-size: 14px; color: #ff4426;margin-top: 5px;'>注释：请您务必填写与户名一致的银行卡号，如果身份信息与出金银行账户名字不一致，可能会导致无法出金。</p>
     </div>
 

@@ -14,7 +14,8 @@
       <div v-else>
         <div class='info-wrap'>
           <div class='info-item'
-               style='font-size: 30px;margin-bottom: 30px;'>在线开户成功！
+               style='font-size: 30px;margin-bottom: 30px;'>
+            在线开户<span v-if='openAccountFlag'>成功</span>
           </div>
           <div class='info-item'>
             <span class='label'>真实姓名:</span> {{trueName}}
