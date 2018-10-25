@@ -49,8 +49,6 @@
       </div>
     </el-form>
 
-    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
-
     <el-dialog
       title="《客户协议书》"
       :visible.sync="dialogVisible"

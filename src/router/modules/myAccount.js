@@ -43,6 +43,13 @@ export default [
         meta: {
           title: '绑定银行卡',
         },
+      },{
+        path: 'changePassword',
+        component: () => import('@/views/myAccount/sections/changePassword'),
+        name: 'changePassword',
+        meta: {
+          title: '修改登录密码',
+        },
       },]
     }]
   }

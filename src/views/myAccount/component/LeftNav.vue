@@ -21,7 +21,7 @@
         绑定银行卡
       </router-link>
 
-      <div class='nav-list-title'>我的账户</div>
+      <div class='nav-list-title'>我的资金</div>
       <router-link class='nav-list-item'
                    to="/myAccount/account">
         我要入金
@@ -40,19 +40,19 @@
         出金记录
       </router-link>
 
-      <div class='nav-list-title'>我的账户</div>
+      <div class='nav-list-title'>账号管理</div>
       <router-link class='nav-list-item'
-                   to="/myAccount/account">
+                   to="changePassword">
         修改登录密码
       </router-link>
-      <router-link class='nav-list-item'
-                   to="/myAccount/realName">
-        退出登录
-      </router-link>
-      <router-link class='nav-list-item'
-                   to="/myAccount/openAccount">
-        我要下载
-      </router-link>
+      <!--<router-link class='nav-list-item'-->
+                   <!--to="/myAccount/realName">-->
+        <!--退出登录-->
+      <!--</router-link>-->
+      <!--<router-link class='nav-list-item'-->
+                   <!--to="/myAccount/openAccount">-->
+        <!--我要下载-->
+      <!--</router-link>-->
     </div>
   </div>
 </template>
