@@ -105,7 +105,10 @@
           this.getAccount()
         } else {
           USER.logout()
-          this.$router.push('/login')
+          this.$message.warning('请重新登录')
+          setTimeout(() => {
+            this.$router.push('/login')
+          }, 1000)
         }
       },
 
@@ -123,7 +126,7 @@
 
       logout() {
         USER.logout()
-        this.$dialog.toast({mes: '退出登录成功！请重新登录'})
+        this.$message.warning('请重新登录')
         setTimeout(() => {
           this.$router.push('/login')
         }, 2000)

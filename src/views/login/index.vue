@@ -108,6 +108,9 @@
                 type: 'success',
                 message: '登录成功',
               })
+
+              store.commit('increment')
+
               self.loading = false
               self.$router.push({ path: '/myAccount' })
             }).catch(() => {

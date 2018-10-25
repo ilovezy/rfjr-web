@@ -203,7 +203,10 @@
           this.getAccount()
         } else {
           USER.logout()
-          this.$router.push('/login')
+          this.$message.warning('请重新登录')
+          setTimeout(() => {
+            this.$router.push('/login')
+          }, 2000)
         }
       },
 
