@@ -43,7 +43,41 @@ export default [
         meta: {
           title: '绑定银行卡',
         },
-      },{
+      },
+        {
+          path: 'recharge',
+          component: () => import('@/views/myAccount/sections/recharge/recharge'),
+          name: 'recharge',
+          meta: {
+            title: '我要入金',
+          },
+        },
+         {
+          path: 'rechargeList',
+          component: () => import('@/views/myAccount/sections/recharge/rechargeList'),
+          name: 'rechargeList',
+          meta: {
+            title: '入金记录',
+          },
+        },
+         {
+          path: 'withdraw',
+          component: () => import('@/views/myAccount/sections/withdraw/withdraw'),
+          name: 'withdraw',
+          meta: {
+            title: '我要出金',
+          },
+        },
+         {
+          path: 'withdrawList',
+          component: () => import('@/views/myAccount/sections/withdraw/withdrawList'),
+          name: 'withdrawList',
+          meta: {
+            title: '出金记录',
+          },
+        },
+
+        {
         path: 'changePassword',
         component: () => import('@/views/myAccount/sections/changePassword'),
         name: 'changePassword',

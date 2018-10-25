@@ -23,20 +23,20 @@
 
       <div class='nav-list-title'>我的资金</div>
       <router-link class='nav-list-item'
-                   to="/myAccount/account">
+                   to="/myAccount/recharge">
         我要入金
       </router-link>
       <router-link class='nav-list-item'
-                   to="/myAccount/realName">
+                   to="/myAccount/rechargeList">
         入金记录
       </router-link>
       <router-link class='nav-list-item'
-                   to="/myAccount/openAccount">
+                   to="/myAccount/withdraw">
         我要出金
       </router-link>
 
       <router-link class='nav-list-item'
-                   to="/myAccount/bindBankCard">
+                   to="/myAccount/withdrawList">
         出金记录
       </router-link>
 

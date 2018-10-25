@@ -41,7 +41,7 @@ window.isDev = window.CurrentEnv == 'development'
 
 Vue.use(Element, {
   size: 'large', // set element-ui default size
-  i18n: (key, value) => i18n.t(key, value)
+  // i18n: (key, value) => i18n.t(key, value)
 })
 Vue.use(CcComponent)
 Vue.use(VCharts) // TODO 暂时用不上
