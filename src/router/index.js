@@ -19,6 +19,15 @@ export const constantRouterMap = [
       name: 'loginPage',
       meta: { title: '登录'}
     }]
+  }, {
+    path: '/register',
+    component: Layout,
+    children: [{
+      path: '',
+      component: () => import('@/views/login/register'),
+      name: 'registerPage',
+      meta: { title: '注册'}
+    }]
   },
 
   { path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true },

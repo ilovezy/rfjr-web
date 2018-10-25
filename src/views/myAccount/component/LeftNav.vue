@@ -24,58 +24,34 @@
       <div class='nav-list-title'>我的账户</div>
       <router-link class='nav-list-item'
                    to="/myAccount/account">
-        账户概览
+        我要入金
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/realName">
-        实名认证
+        入金记录
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/openAccount">
-        在线开户
+        我要出金
       </router-link>
 
       <router-link class='nav-list-item'
                    to="/myAccount/bindBankCard">
-        绑定银行卡
+        出金记录
       </router-link>
 
       <div class='nav-list-title'>我的账户</div>
       <router-link class='nav-list-item'
                    to="/myAccount/account">
-        账户概览
+        修改登录密码
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/realName">
-        实名认证
+        退出登录
       </router-link>
       <router-link class='nav-list-item'
                    to="/myAccount/openAccount">
-        在线开户
-      </router-link>
-
-      <router-link class='nav-list-item'
-                   to="/myAccount/bindBankCard">
-        绑定银行卡
-      </router-link>
-
-      <div class='nav-list-title'>我的账户</div>
-      <router-link class='nav-list-item'
-                   to="/myAccount/account">
-        账户概览
-      </router-link>
-      <router-link class='nav-list-item'
-                   to="/myAccount/realName">
-        实名认证
-      </router-link>
-      <router-link class='nav-list-item'
-                   to="/myAccount/openAccount">
-        在线开户
-      </router-link>
-
-      <router-link class='nav-list-item'
-                   to="/myAccount/bindBankCard">
-        绑定银行卡
+        我要下载
       </router-link>
     </div>
   </div>

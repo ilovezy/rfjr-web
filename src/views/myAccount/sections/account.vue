@@ -15,12 +15,12 @@
 
     <div class='main-container'>
       <div class='main-item'>
-        <div class='number'>{{balance | formatThousands}}</div>
+        <div class='number'>￥{{balance | formatThousands}}</div>
         <div class='text'>资金(USD)</div>
       </div>
 
       <div class='main-item'>
-        <div class='number'>{{availableBalance | formatThousands}}</div>
+        <div class='number'>￥{{availableBalance | formatThousands}}</div>
         <div class='text'>可用资金(USD)</div>
       </div>
     </div>
@@ -136,8 +136,6 @@
        lang="scss"
        scoped>
   .overview-part {
-    padding: 50px !important;
-
     .top-container {
       border: 1px solid #eaeaea;
       margin-bottom: 15px;

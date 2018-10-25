@@ -55,7 +55,7 @@
 
         >div {
           animation: slide 0.5s ease;
-          padding: 15px;
+          padding: 50px;
         }
       }
     }
