@@ -9,8 +9,8 @@
 
       <div class='nav-list'>
         <router-link class='nav-list-item'
-                     to="/index">
-          首页
+                     to="/myAccount">
+          个人中心
         </router-link>
         <router-link class='nav-list-item'
                      to="/dealDetail">
@@ -20,10 +20,6 @@
           软件下载
         </router-link>
         <!--<router-link class='nav-list-item item-my-account'-->
-        <router-link class='nav-list-item'
-                     to="/myAccount">
-          个人中心
-        </router-link>
       </div>
     </div>
   </div>

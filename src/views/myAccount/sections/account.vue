@@ -7,7 +7,7 @@
         <div class='basic-info-detail'>
           <div>登录账户：{{name}}</div>
           <div class='basic-info-item'>交易账户：{{openAccountFlag ? account : '未开户'}}</div>
-          <div>《客户资金安全协议合同》 <a href='./客户资金安全协议合同.pdf' download='客户资金安全协议合同.pdf'  style='color: red;'>点击下载 TODO</a></div>
+          <!--<div>《客户资金安全协议合同》 <a href='./客户资金安全协议合同.pdf' download='客户资金安全协议合同.pdf'  style='color: red;'>点击下载 TODO</a></div>-->
         </div>
       </div>
       <div class='code'></div>

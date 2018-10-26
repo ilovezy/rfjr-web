@@ -57,9 +57,9 @@ export const constantRouterMap = [
     redirect: 'index',
     children: [{
       path: 'index',
-      component: () => import('@/views/indexPage/index'),
+      component: () => import('@/views/myAccount/myAccountPage'),
       name: 'index',
-      meta: { title: '首页'}
+      meta: { title: '个人中心'}
     }, {
       path: 'infoDisclosure',
       component: () => import('@/views/infoDisclosure/infoDisclosurePage'),
