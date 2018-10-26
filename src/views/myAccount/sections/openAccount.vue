@@ -12,54 +12,63 @@
         </el-alert>
       </div>
       <div v-else>
-        <div class='info-wrap'>
-          <div class='info-item'
-               style='font-size: 30px;margin-bottom: 30px;'>
-            在线开户<span v-if='openAccountFlag'>成功</span>
+        <div v-if='showSuccess' class='success-wrap'>
+          <div class='success-icon'>
+            <div class='icon-wrap'>
+            <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
+            </div>
           </div>
-          <div class='info-item'>
-            <span class='label'>真实姓名:</span> {{trueName}}
-          </div>
-          <div class='info-item'>
-            <span class='label'>身份证号码:</span> {{identityNo}}
-          </div>
-
-          <div class='info-item'
-               v-if='openAccountFlag'>
-            <span class='label'>交易账户:</span> {{account}}
-          </div>
+          <div class='title'>在线开户成功！</div>
         </div>
+        <div v-else>
+          <div class='info-wrap'>
+            <div class='info-item'
+                 style='font-size: 30px;margin-bottom: 30px;'>
+              在线开户<span v-if='openAccountFlag'>成功</span>
+            </div>
+            <div class='info-item'>
+              <span class='label'>真实姓名:</span> {{trueName}}
+            </div>
+            <div class='info-item'>
+              <span class='label'>身份证号码:</span> {{identityNo}}
+            </div>
 
-        <el-form status-icon
-                 style='margin-top: 30px;'
-                 ref="ruleForm2"
-                 label-width="100px"
-                 class="demo-ruleForm">
-          <el-form-item label="邀请码"
-                        v-if='!openAccountFlag'
-                        prop="trueName">
-            <el-input type="number"
-                      placeholder="请输入邀请码"
-                      maxlength="10"
-                      v-model="inviteId"
-                      autocomplete="off"></el-input>
-          </el-form-item>
+            <div class='info-item'
+                 v-if='openAccountFlag'>
+              <span class='label'>交易账户:</span> {{account}}
+            </div>
+          </div>
+          <el-form status-icon
+                   style='margin-top: 30px;'
+                   ref="ruleForm2"
+                   label-width="100px"
+                   class="demo-ruleForm">
+            <el-form-item label="邀请码"
+                          v-if='!openAccountFlag'
+                          prop="trueName">
+              <el-input type="number"
+                        placeholder="请输入邀请码"
+                        maxlength="10"
+                        v-model="inviteId"
+                        autocomplete="off"></el-input>
+            </el-form-item>
 
-          <el-form-item>
-            <el-checkbox :disabled='openAccountFlag'
-                         v-model="agreement"
-                         label="我已阅读并同意"></el-checkbox>
-            <span @click='dialogVisible = true'
-                  style='color: orangered;cursor: pointer;'>《客户协议书》</span>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary"
-                       :disabled='!agreement'
-                       v-if='!openAccountFlag'
-                       @click="validForm">确定
-            </el-button>
-          </el-form-item>
-        </el-form>
+            <el-form-item>
+              <el-checkbox :disabled='openAccountFlag'
+                           v-model="agreement"
+                           label="我已阅读并同意"></el-checkbox>
+              <span @click='dialogVisible = true'
+                    style='color: orangered;cursor: pointer;'>《客户协议书》</span>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary"
+                         :disabled='!agreement'
+                         v-if='!openAccountFlag'
+                         @click="validForm">确定
+              </el-button>
+            </el-form-item>
+          </el-form>
+        </div>
       </div>
     </div>
 
@@ -192,7 +201,9 @@
         agreement: false,
 
 
-        dialogVisible: false
+        dialogVisible: false,
+
+        showSuccess: false
       }
     },
     created() {
@@ -245,11 +256,10 @@
       },
 
       registerSuccess(res) {
-         if (res) {
+        if (res) {
           this.$message.success('在线开户成功');
           setTimeout(() => {
-            // this.getToken()
-            location.reload()
+            this.showSuccess = true
           }, 1000)
         }
       }

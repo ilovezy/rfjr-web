@@ -17,28 +17,39 @@
       </div>
 
       <div v-else>
-        <el-form status-icon
-                 ref="ruleForm2"
-                 label-width="100px"
-                 class="demo-ruleForm">
-          <el-form-item label="真实姓名"
-                        prop="trueName">
-            <el-input type="text"
-                      v-model="trueName"
-                      autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="身份证号码"
-                        prop="identityNo">
-            <el-input type="text"
-                      v-model="identityNo"
-                      autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary"
-                       @click="validForm">确定
-            </el-button>
-          </el-form-item>
-        </el-form>
+        <div v-if='showSuccess'
+             class='success-wrap'>
+          <div class='success-icon'>
+            <div class='icon-wrap'>
+              <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
+            </div>
+          </div>
+          <div class='title'>实名认证成功！</div>
+        </div>
+        <div v-else>
+          <el-form status-icon
+                   ref="ruleForm2"
+                   label-width="100px"
+                   class="demo-ruleForm">
+            <el-form-item label="真实姓名"
+                          prop="trueName">
+              <el-input type="text"
+                        v-model="trueName"
+                        autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证号码"
+                          prop="identityNo">
+              <el-input type="text"
+                        v-model="identityNo"
+                        autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary"
+                         @click="validForm">确定
+              </el-button>
+            </el-form-item>
+          </el-form>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +63,8 @@
         trueName: '',
         identityNo: '',
         loading: true,
-        realNameFlag: false
+        realNameFlag: false, showSuccess: false
+
       }
     },
 
@@ -114,7 +126,9 @@
         if (res) {
           this.$message.success('实名认证成功');
           setTimeout(() => {
-            this.getToken()
+            // this.getToken()
+            this.showSuccess = true
+
           }, 1000)
         }
       }

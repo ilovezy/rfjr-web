@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import "./mixin";
+
 [v-cloak] {
   display: none;
 }
@@ -62,4 +63,31 @@ img {
 .global-container {
   width: 1200px;
   margin: 0 auto;
+}
+
+.success-wrap {
+  padding-top: 50px;
+  .success-icon {
+    text-align: center;
+    margin-bottom: 40px;
+    .icon-wrap {
+
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      border-radius: 100px;
+      background: #009e00;
+      color: #fff;
+
+      .iconfont {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: center;
+  }
 }

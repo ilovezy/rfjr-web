@@ -18,6 +18,15 @@
         </div>
 
         <div v-else>
+          <div v-if='showSuccess' class='success-wrap'>
+            <div class='success-icon'>
+              <div class='icon-wrap'>
+                <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
+              </div>
+            </div>
+            <div class='title'>银行卡绑定成功！</div>
+          </div>
+          <div v-else>
           <div class='info-wrap'
                style='margin-top: 30px; font-size: 20px;'
                v-if='bindCardFlag'>
@@ -52,6 +61,7 @@
               </el-form-item>
             </el-form>
           </div>
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +78,9 @@
         loading: true,
         bindCardFlag: false,
         trueName: '',
-        realNameFlag: false
+        realNameFlag: false,
+        showSuccess: false
+
       }
     },
     created() {
@@ -119,7 +131,8 @@
       registerSuccess(res) {
         this.$message.success('绑卡成功！');
         setTimeout(() => {
-          location.reload()
+          // location.reload()
+          this.showSuccess = true
         }, 1000)
       }
     }
