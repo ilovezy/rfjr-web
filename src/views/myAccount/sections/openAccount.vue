@@ -58,7 +58,7 @@
                            v-model="agreement"
                            label="我已阅读并同意"></el-checkbox>
               <span @click='dialogVisible = true'
-                    style='color: orangered;cursor: pointer;'>《客户协议书》</span>
+                    style='color: orangered;cursor: pointer;'>《风险揭示书》</span>
             </el-form-item>
             <el-form-item>
               <el-button type="primary"

@@ -1,10 +1,11 @@
 <template>
   <div class='navbar '>
     <div class='navbar-wrap global-container'>
-      <div class='logo'>
-        <!--<img src='./img/logo.png'-->
-        <!--alt=''>-->
-        日发金融
+      <div class='logo' style='height: 80px'>
+        <img src='./img/logo.png'
+             style='height: auto; transform: scale(0.8);position: relative;left: -55px;'
+        alt=''>
+        <!--日发金融-->
       </div>
 
       <div class='nav-list'>
