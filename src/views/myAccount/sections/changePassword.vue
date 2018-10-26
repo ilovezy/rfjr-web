@@ -76,8 +76,20 @@
 
       registerSuccess(res) {
         if (res) {
-          this.$message.success('修改成功');
+          this.$message.success('修改成功, 请重新登录')
+          const self = this
+          setTimeout(() => {
+            self.doLogout()
+          }, 1000)
         }
+      },
+
+      doLogout(){
+        USER.logout()
+        setTimeout(() => {
+          this.$router.push('/login')
+          this.$store.dispatch('UPDATE_USER_INFO', {})
+        }, 1000)
       }
     }
   }
