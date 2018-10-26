@@ -144,19 +144,20 @@
         border-radius: 0px;
         padding: 12px 5px 12px 15px;
         color: #333;
-        height: 47px;
-        caret-color: $cursor;
+        height: 47px;    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+
       }
     }
 
     .el-form-item__error {
       font-size: 16px;
+      margin-top: 3px;
     }
 
     .el-form-item {
-      border: 1px solid #333;
+      border-bottom: 1px solid #333;
       /*background: rgba(0, 0, 0, 0.1);*/
-      border-radius: 5px;
+      /*border-radius: 5px;*/
       color: #454545;
       margin-bottom: 40px;
     }
@@ -174,10 +175,12 @@
     background-color: $bg;
     .login-form {
       width: 520px;
-      padding: 35px 35px 15px 35px;
+      padding: 35px;
       margin: 120px auto;
-      background: #eaeaea;
-      border-radius: 10px;
+      /*background: #eaeaea;*/
+      /*box-shadow: 0px 0 3px #000;*/
+      border: 1px solid #eaeaea;
+      /*border-radius: 10px;*/
     }
     .tips {
       font-size: 14px;
@@ -195,8 +198,9 @@
       vertical-align: middle;
       width: 30px;
       display: inline-block;
+      font-size: 20px;
       &_login {
-        font-size: 20px;
+        font-size: 25px;
       }
     }
     .title-container {
