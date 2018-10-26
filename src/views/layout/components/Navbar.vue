@@ -71,13 +71,13 @@
           box-sizing: border-box;
           height: 100%;
           &.router-link-exact-active {
-            border-bottom: 3px solid red;
+            border-bottom: 3px solid #4fb7ea;
           }
 
           &.item-my-account {
             margin-left: 80px;
             &.router-link-active {
-              border-bottom: 3px solid red;
+              border-bottom: 3px solid #4fb7ea;
             }
           }
         }

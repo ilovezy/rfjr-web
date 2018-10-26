@@ -76,6 +76,7 @@
        lang="scss"
        scoped>
   .left-nav {
+    padding: 15px 15px 0 0;
     .left-nav-list {
       height: 100%;
       overflow-y: auto;
@@ -98,7 +99,7 @@
           margin-left: 15px;
         }
         &.router-link-exact-active {
-          border-left: 3px solid red;
+          border-left: 3px solid #4fb7ea;
         }
         &:hover {
           background: #e2e2e2;
