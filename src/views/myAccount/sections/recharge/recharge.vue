@@ -12,57 +12,75 @@
       <div v-if='!realNameFlag'>请先进行实名认证</div>
 
       <div v-else>
-        <el-form ref="form"
-                 label-width="80px">
-          <el-form-item label="入金金额"
-                        style='margin-bottom: 0;'>
-            <el-input-number v-model.number="amount"
-                             placeholder="输入入金金额"
-                             maxlength="10"
-                             controls-position="right"
-            ></el-input-number>
-          </el-form-item>
-          <el-form-item label="">
-            <p style='margin-bottom: 0.4rem;'>汇率：<span style='color: orangered;'>7.75</span></p>
-          </el-form-item>
-        </el-form>
+        <div v-if='showSuccess'
+             class='success-wrap'>
+          <div class='success-icon'>
+            <div class='icon-wrap'>
+              <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
+            </div>
+          </div>
+          <div class='title'>入金成功！</div>
+          <div class='success-footer'>
+            <el-button @click="showSuccess = false">继续入金
+            </el-button>
+            <el-button type="primary"
+                       @click="goRecord">查看入金记录
+            </el-button>
+          </div>
+        </div>
+        <div v-else>
+          <el-form ref="form"
+                   label-width="80px">
+            <el-form-item label="入金金额"
+                          style='margin-bottom: 0;'>
+              <el-input-number v-model.number="amount"
+                               placeholder="输入入金金额"
+                               maxlength="10"
+                               controls-position="right"
+              ></el-input-number>
+            </el-form-item>
+            <el-form-item label="">
+              <p style='margin-bottom: 0.4rem;'>汇率：<span style='color: orangered;'>7.75</span></p>
+            </el-form-item>
+          </el-form>
 
-        <div class='select-pay-way-wrap'>
-          <div class='title-sm'>选择支付方式</div>
+          <div class='select-pay-way-wrap'>
+            <div class='title-sm'>选择支付方式</div>
 
-          <div class='pay-way-container'>
+            <div class='pay-way-container'>
         <span class='alipay-item'
               @click='selectAli'
               :class='type == "alipay" && "active"'>
           <span class='iconfont icon-umidd317 ali-icon'></span> 支付宝
         </span>
-            <span class='bank-item'
-                  @click='selectBank'
-                  :class='type == "bank_card" && "active"'>
+              <span class='bank-item'
+                    @click='selectBank'
+                    :class='type == "bank_card" && "active"'>
           <img src='./img/bank.png'
                class='bank-icon'
                alt=''>银联
         </span>
-          </div>
+            </div>
 
-          <div class='info-container'>
-            <div v-if='type == "alipay"'>
-              <div class='qrcode'>
-                <img src='./img/qrcode.png'
-                     alt=''>
+            <div class='info-container'>
+              <div v-if='type == "alipay"'>
+                <div class='qrcode'>
+                  <img src='./img/qrcode.png'
+                       alt=''>
+                </div>
+              </div>
+              <div v-if='type == "bank_card"'
+                   class='bank-wrap'>
+                <div class='item'>户名：王萃</div>
+                <div class='item'>开户银行：中国银行杭州文辉支行</div>
+                <div class='item'>开户银行卡号：6216696200004027992</div>
               </div>
             </div>
-            <div v-if='type == "bank_card"'
-                 class='bank-wrap'>
-              <div class='item'>户名：王萃</div>
-              <div class='item'>开户银行：中国银行杭州文辉支行</div>
-              <div class='item'>开户银行卡号：6216696200004027992</div>
-            </div>
           </div>
+          <el-button type="primary"
+                     @click="validForm">我已经确认支付，确认
+          </el-button>
         </div>
-        <el-button type="primary"
-                   @click="validForm">我已经确认支付，确认
-        </el-button>
       </div>
     </div>
   </div>
@@ -77,12 +95,17 @@
         bindCardFlag: false,
         openAccountFlag: false,
         realNameFlag: false,
+
+        showSuccess: false
       }
     },
     created() {
       this.getToken()
     },
     methods: {
+      goRecord(){
+        this.$router.push('/myAccount/rechargeList')
+      },
       selectAli() {
         this.type = 'alipay'
       },
@@ -138,6 +161,8 @@
       registerSuccess(res) {
         if (res) {
           this.$message.success('入金成功');
+          this.showSuccess = true
+          this.amount = ''
         }
       }
     }

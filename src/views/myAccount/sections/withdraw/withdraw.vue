@@ -11,6 +11,23 @@
       <div v-else-if='!bindCardFlag'>请先绑定银行卡</div>
 
       <div v-else>
+        <div v-if='showSuccess'
+             class='success-wrap'>
+          <div class='success-icon'>
+            <div class='icon-wrap'>
+              <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
+            </div>
+          </div>
+          <div class='title'>出金申请成功！</div>
+          <div class='success-footer'>
+            <el-button @click="showSuccess = false">继续出金
+            </el-button>
+            <el-button type="primary"
+                       @click="goRecord">查看出金记录
+            </el-button>
+          </div>
+        </div>
+        <div v-else>
         <el-form status-icon
                  style='margin-top: 30px;'
                  ref="ruleForm2"
@@ -35,6 +52,7 @@
         </el-form>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -49,7 +67,8 @@
         bindCardFlag: false,
         openAccountFlag: false,
         realNameFlag: false,
-        loading: true
+        loading: true,
+        showSuccess: false
       }
     },
     created() {
@@ -61,6 +80,9 @@
       // }
     },
     methods: {
+      goRecord(){
+        this.$router.push('/myAccount/withdrawList')
+      },
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
@@ -111,7 +133,9 @@
 
       registerSuccess(res) {
         if (res) {
-          this.$message.success('出金成功');
+          this.$message.success('出金申请成功');
+          this.showSuccess = true
+          this.amount = ''
         }
       }
     }
