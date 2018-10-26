@@ -127,7 +127,6 @@
       //提交注册
       doConfirm() {
         const self = this
-        this.$message.warning('入金中，请稍后...')
         AXIOS.post('/api/member/recharge', {
           amount: this.amount,
           type: this.type

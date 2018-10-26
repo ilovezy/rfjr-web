@@ -102,7 +102,6 @@
       //提交注册
       doConfirm() {
         const self = this
-        this.$message.warning('实名认证中，请稍后...')
         AXIOS.post('/api/member/realName', {
           trueName: this.trueName,
           identityNo: this.identityNo,

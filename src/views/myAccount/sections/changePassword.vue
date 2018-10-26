@@ -66,7 +66,6 @@
       //提交注册
       doConfirm() {
         const self = this
-        this.$message.warning('登录密码修改中，请稍后...')
         AXIOS.post('/api/member/password/change', {
           oldPassword: this.oldPassword,
           newPassword: this.newPassword,

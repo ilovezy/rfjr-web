@@ -102,7 +102,6 @@
       //提交注册
       doConfirm() {
         const self = this
-        this.$message.warning('出金中，请稍后...')
         AXIOS.post('/api/member/withdraw', {
           amount: this.amount,
         }).then(res => {

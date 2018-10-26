@@ -237,7 +237,6 @@
       //提交注册
       doConfirm() {
         const self = this
-        this.$message.warning('在线开户中，请稍后...')
         AXIOS.post('/api/member/openAccount', {
           inviteId: this.inviteId,
         }).then(res => {

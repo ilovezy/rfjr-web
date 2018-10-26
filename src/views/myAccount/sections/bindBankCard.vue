@@ -109,7 +109,6 @@
       //提交注册
       doRegister() {
         const self = this
-        this.$message.warning('绑卡中，请稍后...')
         AXIOS.post('/api/member/bindCard', {
           cardNo: this.cardNo,
         }).then(res => {
