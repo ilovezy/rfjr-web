@@ -16,7 +16,7 @@ module.exports = {
 
     // can be overwritten by process.env.HOST
     // if you want dev by ip, please set host: '0.0.0.0'
-    host: '10.60.10.30',
+    host: 'localhost',
     port: 9527, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
@@ -66,7 +66,7 @@ module.exports = {
      * then assetsPublicPath should be set to "/bar/".
      * In most cases please use '/' !!!
      */
-    assetsPublicPath: '/', // If you are deployed on the root path, please use '/'
+    assetsPublicPath: '/web/', // If you are deployed on the root path, please use '/'
 
     /**
      * Source Maps
