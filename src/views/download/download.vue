@@ -22,6 +22,17 @@
           </span>
       <p>安卓版：使用手机浏览器扫描二维码（不支持微信扫描）</p>
     </div>
+
+    <div class='item-android'>
+      <div class='left-info'>
+          <span class='iconfont icon-drgspingtairuanjianxitong373'
+                style='color: #4863ff'></span>
+        <div>星空联盟行情委托系统</div>
+      </div>
+      <a href="http://118.25.23.224/download/星空联盟行情委托系统.exe"
+         class="el-button el-button--primary el-button--large"
+         style="margin-top: 30px;">点击下载</a>
+    </div>
   </div>
 </template>
 
@@ -30,7 +41,7 @@
   export default {
     data() {
       return {}
-    },
+    }
 
   }
 </script>
@@ -66,10 +77,7 @@
       border: 1px solid #eaeaea;
       text-align: center;
       padding: 35px;
-    }
-
-    .item-ios {
-      margin-right: 60px;
+      margin: 0 30px;
     }
 
     .item-android {
