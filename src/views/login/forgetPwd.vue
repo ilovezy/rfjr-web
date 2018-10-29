@@ -1,52 +1,58 @@
 <template>
-  <div class="login-container">
+  <div class="forget-container">
 
     <el-form class="login-form"
              autoComplete="on"
              :model="loginForm"
-             :rules="loginRules"
              ref="loginForm"
              label-position="left">
 
       <div class="title-container">
-        <h3 class="title">登录</h3>
+        <h3 class="title">忘记密码</h3>
       </div>
 
-      <el-form-item prop="loginName">
-        <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user"/>
-        </span>
-        <el-input name="loginName"
-                  v-model="loginForm.loginName"
+      <el-form-item prop="name"
+                    label='用户名'>
+        <el-input name="name"
+                  v-model="loginForm.name"
                   autoComplete="on"
-                  placeholder="请输入用户名"
-        />
+                  placeholder="请输入用户名"/>
+      </el-form-item>
+      <el-form-item prop="mobile"
+                    label='手机号'>
+        <el-input name="mobile"
+                  v-model="loginForm.mobile"
+                  autoComplete="on"
+                  placeholder="请输入手机号"/>
+      </el-form-item>
+      <el-form-item prop="trueName"
+                    label='真实姓名'>
+        <el-input name="trueName"
+                  v-model="loginForm.trueName"
+                  autoComplete="on"
+                  placeholder="请输入真实姓名"/>
+      </el-form-item>
+      <el-form-item prop="identityNo"
+                    label='身份证号码'>
+        <el-input name="identityNo "
+                  v-model="loginForm.identityNo"
+                  autoComplete="on"
+                  placeholder="请输入身份证号码"/>
       </el-form-item>
 
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password"/>
-        </span>
-        <el-input name="password"
-                  :type="passwordType"
-                  @keyup.enter.native="handleLogin"
-                  v-model="loginForm.password"
+      <el-form-item prop="account"
+                    label='开户名'>
+        <el-input name="account"
+                  v-model="loginForm.account"
                   autoComplete="on"
-                  placeholder="请输入密码"/>
-        <span class="show-pwd"
-              @click="showPwd">
-          <svg-icon icon-class="eye"/>
-        </span>
+                  placeholder="请输入开户名"/>
       </el-form-item>
 
       <el-button type="primary"
                  style="width:100%;margin-bottom:30px;"
                  :loading="loading"
-                 @click.native.prevent="handleLogin">登录
+                 @click.native.prevent="validForm">提交申请
       </el-button>
-      <div style='color: #3897ff;text-align: right; cursor: pointer;'>
-        <router-link to="/forgetPwd">忘记密码</router-link>
-      </div>
     </el-form>
   </div>
 </template>
@@ -57,28 +63,13 @@
   export default {
     name: 'login',
     data() {
-      const validateUsername = (rule, value, callback) => {
-        if (value) {
-          callback()
-        } else {
-          callback(new Error('请输入正确的用户名'))
-        }
-      }
-      const validatePassword = (rule, value, callback) => {
-        if (isValidPassword(value)) {
-          callback()
-        } else {
-          callback(new Error('请输入正确的密码，6-16位'))
-        }
-      }
       return {
         loginForm: {
-          loginName: '',
-          password: ''
-        },
-        loginRules: {
-          loginName: [{required: true, trigger: 'blur', validator: validateUsername}],
-          password: [{required: true, trigger: 'blur', validator: validatePassword}]
+          name: '',
+          mobile: '',
+          trueName: '',
+          identityNo: '',
+          account: '',
         },
         passwordType: 'password',
         loading: false
@@ -94,31 +85,46 @@
         }
       },
 
+      validForm() {
+        let loginForm = this.loginForm || {}
+        if (!isValidUserName(loginForm.name)) {
+          this.$message.warning('用户名不正确，长度为2-18位');
+          return
+        }
+        if (!isValidPhone(loginForm.mobile)) {
+          this.$message.warning('手机号码格式不正确');
+          return
+        }
+        if (!loginForm.trueName) {
+          this.$message.warning('请输入真实名称');
+          return
+        }
+        if (!isValidIdentityNum(loginForm.identityNo)) {
+          this.$message.warning('身份证号码格式不正确');
+          return
+        }
+        if (!loginForm.account) {
+          this.$message.warning('请输入开户名');
+          return
+        }
+
+        this.handleLogin()
+      },
+
       handleLogin() {
         const self = this
-        const loginName = self.loginForm.loginName
-        const password = self.loginForm.password
-        self.$refs.loginForm.validate(valid => {
-          if (valid) {
-            self.loading = true
-            AXIOS.post('/security/api/member/login', {
-              loginName: loginName,
-              password: password,
-            }).then(res => {
-              USER.setToken(res)
-              USER.setLoginName(loginName)
-              self.$message({
-                type: 'success',
-                message: '登录成功',
-              })
-              self.loading = false
-              self.$router.push({path: '/myAccount'})
-            }).catch(() => {
-              self.loading = false
-            })
-          } else {
-            return false
-          }
+        self.loading = true
+        AXIOS.post('/security/api/member/forget/password', self.loginForm).then(res => {
+          self.$message({
+            type: 'success',
+            message: '提交申请成功,等待受理',
+          })
+          self.loading = false
+          setTimeout(() => {
+            self.$router.push('/login')
+          }, 1000)
+        }).catch(() => {
+          self.loading = false
         })
       }
     }
@@ -135,11 +141,11 @@
   $cursor: #fff;
 
   /* reset element-ui css */
-  .login-container {
+  .forget-container {
     .el-input {
       display: inline-block;
       height: 47px;
-      width: 85%;
+      width: 50%!important;
       input {
         background: transparent;
         border: 0px;
@@ -149,8 +155,13 @@
         color: #333;
         height: 47px;
         -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-
       }
+    }
+
+    .el-form-item__label {
+      position: relative;
+      top: 3px;
+      width: 100px;
     }
 
     .el-form-item__error {
@@ -175,7 +186,7 @@
   $dark_gray: #889aa4;
   $light_gray: #eee;
 
-  .login-container {
+  .forget-container {
     background-color: $bg;
     .login-form {
       width: 520px;

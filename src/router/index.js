@@ -19,6 +19,15 @@ export const constantRouterMap = [
       name: 'loginPage',
       meta: { title: '登录'}
     }]
+  },  {
+    path: '/forgetPwd',
+    component: Layout,
+    children: [{
+      path: '',
+      component: () => import('@/views/login/forgetPwd'),
+      name: 'forgetPwdPage',
+      meta: { title: '忘记密码'}
+    }]
   }, {
     path: '/register',
     component: Layout,

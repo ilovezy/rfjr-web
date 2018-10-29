@@ -24,7 +24,7 @@ window.isInteger = function (obj) {
 }
 // 检测正确的账户名 2-18位
 window.isValidUserName = function (phone) {
-  var tempPhone = Number(phone)
+  var tempPhone = phone
   return /^.{2,18}$/.test(tempPhone)
 }
 window.isValidCardNumber = function (str) {
