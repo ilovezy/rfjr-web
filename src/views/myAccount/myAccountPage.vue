@@ -1,6 +1,9 @@
 <template>
   <div class="my-account-page">
-    <div class='my-account-page-wrap global-container'>
+    <div v-if='loading' style='padding: 100px;' v-loading='loading'>
+
+    </div>
+    <div class='my-account-page-wrap global-container' v-else>
       <left-nav></left-nav>
 
       <div class='my-account-container'>
@@ -23,14 +26,25 @@
       }
     },
     name: 'myAccount',
+    created(){
+      this.setLogin()
+    },
     data() {
-      return {}
+      return {
+        loading: true
+      }
     },
 
-    mounted() {
+    methods: {
+      setLogin(){
+        if (USER.isLogin()){
+          this.loading = false
+        } else {
+          this.$router.push('/login')
+        }
+      }
     },
 
-    methods: {}
   }
 </script>
 

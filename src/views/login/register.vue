@@ -38,15 +38,17 @@
           <svg-icon icon-class="eye"/>
         </span>
       </el-form-item>
+
+      <div class="cell-protocol" style='margin-bottom: 30px;'>
+        <el-checkbox v-model="checked">注册即代表同意<span @click='dialogVisible = true' style='color: orangered;cursor: pointer;'>《客户协议书》</span></el-checkbox>
+      </div>
       <el-button type="primary"
                  style="width:100%;margin-bottom:30px;"
                  :loading="loading"
+                 :disabled='!checked'
                  @click.native.prevent="handleLogin">注册
       </el-button>
 
-      <div class="cell-protocol" style='text-align: center;'>
-        注册即代表同意<span @click='dialogVisible = true' style='color: orangered;cursor: pointer;'>《客户协议书》</span>
-      </div>
     </el-form>
 
     <el-dialog
@@ -208,7 +210,8 @@
         loading: false,
 
         inviteId: '',
-        dialogVisible: false
+        dialogVisible: false,
+        checked: false
       }
     },
     created() {
