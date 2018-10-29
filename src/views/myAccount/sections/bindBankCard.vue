@@ -18,7 +18,8 @@
         </div>
 
         <div v-else>
-          <div v-if='showSuccess' class='success-wrap'>
+          <div v-if='showSuccess'
+               class='success-wrap'>
             <div class='success-icon'>
               <div class='icon-wrap'>
                 <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
@@ -27,24 +28,45 @@
             <div class='title'>银行卡绑定成功！</div>
           </div>
           <div v-else>
-          <div class='info-wrap'
-               style='margin-top: 30px; font-size: 20px;'
-               v-if='bindCardFlag'>
-            <div class='info-item'>
-              <span class='label'>开户银行卡号:</span> {{cardNo}}
-            </div>
-          </div>
-
-          <div v-else>
             <el-form status-icon
                      style='margin-top: 30px;'
                      ref="ruleForm2"
                      label-width="100px"
                      class="demo-ruleForm">
-              <el-form-item label="户名"
-                            prop="trueName">
-                {{trueName}}
+              <div style='padding: 15px; padding-bottom: 0;background: #f8f8f8; margin-bottom: 15px;'>
+                <el-form-item label="开户人"
+                              prop="trueName"
+                              style='margin-bottom: 0px;'>
+                  {{trueName}}
+                </el-form-item>
+                <el-form-item label="身份证号码"
+                              prop="identityNo">
+                  {{identityNo}}
+                  <br> <span style='color: red'>(认证已完成不可更改)</span>
+                </el-form-item>
+              </div>
+              <el-form-item label="银行名称"
+                            prop="bankName">
+                <el-input placeholder="请输入银行名称"
+                          v-model="bankName"
+                          autocomplete="off"></el-input>
               </el-form-item>
+              <el-form-item label="开户支行"
+                            prop="bankBranch">
+                <el-input placeholder="请输入开户支行"
+                          v-model="bankBranch"
+                          autocomplete="off"></el-input>
+              </el-form-item>
+              <el-form-item label="开户地址"
+                            prop="trueName">
+                <v-distpicker :province='provinceName'
+                              :city='cityName'
+                              :area='areaName'
+                              @province='changeProvince'
+                              @city='changeCity'
+                              @area='changeArea'></v-distpicker>
+              </el-form-item>
+
               <el-form-item label="开户银行卡号"
                             prop="trueName">
                 <el-input type="number"
@@ -61,7 +83,6 @@
               </el-form-item>
             </el-form>
           </div>
-          </div>
         </div>
       </div>
     </div>
@@ -69,24 +90,53 @@
 </template>
 
 <script>
+  import VDistpicker from 'v-distpicker'
 
   export default {
+    components: {VDistpicker},
+
     name: 'leftNav',
     data() {
       return {
         cardNo: '',
+        provinceCode: '',
+        provinceName: '',
+        cityCode: 0,
+        cityName: '',
+        areaCode: 0,
+        areaName: '',
+        bankName: '',
+        bankBranch: '',
+
         loading: true,
         bindCardFlag: false,
         trueName: '',
+        identityNo: '',
         realNameFlag: false,
-        showSuccess: false
-
+        showSuccess: false,
       }
     },
     created() {
       this.getToken()
     },
+    computed: {
+      address() {
+        return this.provinceName + this.cityName + this.areaName
+      }
+    },
     methods: {
+      changeProvince(data) {
+        this.provinceCode = data.code
+        this.provinceName = data.value
+      },
+      changeCity(data) {
+        this.cityCode = data.code
+        this.cityName = data.value
+      },
+      changeArea(data) {
+        this.areaCode = data.code
+        this.areaName = data.value
+      },
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
@@ -105,12 +155,32 @@
           this.realNameFlag = res.realNameFlag
           this.cardNo = res.cardNo
           this.trueName = res.trueName
+          this.identityNo = res.identityNo
+          this.bankName = res.cardBankName
+          this.bankBranch = res.cardBankBranch
+          this.provinceCode = res.cardProvinceCode
+          this.provinceName = res.cardProvinceName
+          this.cityCode = res.cardCityCode
+          this.cityName = res.cardCityName
+          this.areaCode = res.cardDictCode
+          this.areaName = res.cardDictName
           this.loading = false
           this.$store.dispatch('UPDATE_USER_INFO', res)
-
         })
       },
       validForm() {
+        if (!this.bankName) {
+          this.$message.warning('请填写银行名称');
+          return
+        }
+        if (!this.bankBranch) {
+          this.$message.warning('请填写开户支行');
+          return
+        }
+        if (!this.provinceCode) {
+          this.$message.warning('请选择开户地址');
+          return
+        }
         if (!isValidCardNumber(this.cardNo)) {
           this.$message.warning('请输入正确的开户银行卡号');
           return
@@ -123,6 +193,15 @@
         const self = this
         AXIOS.post('/api/member/bindCard', {
           cardNo: this.cardNo,
+          provinceCode: this.provinceCode,
+          provinceName: this.provinceName,
+          cityCode: this.cityCode,
+          cityName: this.cityName,
+          dictCode: this.areaCode, // 后天区的字段为 dictCode
+          dictName: this.areaName, // 后天区的字段为 dictCode
+          address: this.address,
+          bankName: this.bankName,
+          bankBranch: this.bankBranch,
         }).then(res => {
           self.registerSuccess(res)
         })
@@ -131,7 +210,6 @@
       registerSuccess(res) {
         this.$message.success('绑卡成功！');
         setTimeout(() => {
-          // location.reload()
           this.showSuccess = true
         }, 1000)
       }

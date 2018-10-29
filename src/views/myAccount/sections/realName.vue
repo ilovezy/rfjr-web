@@ -128,7 +128,7 @@
           setTimeout(() => {
             // this.getToken()
             this.showSuccess = true
-
+this.getAccount()
           }, 1000)
         }
       }
