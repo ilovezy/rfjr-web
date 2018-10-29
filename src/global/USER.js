@@ -1,68 +1,28 @@
 let USER = {
   setToken(str) {
-    localStorage.setItem('token', str)
+    localStorage.setItem('rfjr-web-token', str)
   },
   getToken() {
-    return localStorage.getItem('token')
-  },
-  setUserType(str){
-    localStorage.setItem('userType', str)
-  },
-  getUserType() {
-    return localStorage.getItem('userType')
+    return localStorage.getItem('rfjr-web-token')
   },
   isLogin() {
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('rfjr-web-token')
   },
   setLoginName(str) {
-    localStorage.setItem('loginName', str)
+    localStorage.setItem('rfjr-web-loginName', str)
   },
 
   getLoginName() {
-    return localStorage.getItem('loginName')
+    return localStorage.getItem('rfjr-web-loginName')
   },
 
-  setPassword(str) {
-    localStorage.setItem('password', str)
-  },
-  getPassword() {
-    return localStorage.getItem('password')
-  },
-
-  setHebaoCode(str) {
-    localStorage.setItem('hebaoCode', str)
-  },
-
-  getHebaoCode() {
-    return localStorage.getItem('hebaoCode')
-  },
-
-  removeHebaoCode(){
-    localStorage.removeItem('hebaoCode')
-  },
-
-  setSelectProductTab(str){
-    localStorage.setItem('selectProductTab', str)
-  },
-
-  getSelectProductTab(){
-    return localStorage.getItem('selectProductTab')
-  },
-  removeSelectProductTab(){
-     localStorage.removeItem('selectProductTab')
-  },
-  setPermissions(arr){
-    localStorage.setItem('permissonList', JSON.stringify(arr))
-  },
   getPermissions(){
-    return JSON.parse(localStorage.getItem('permissonList'))
+    return JSON.parse(localStorage.getItem('rfjr-web-permissonList'))
   },
   logout() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('loginName')
-    localStorage.removeItem('password')
-    localStorage.removeItem('hebaoCode')
-    localStorage.removeItem('permissonList')
+    localStorage.removeItem('rfjr-web-token')
+    localStorage.removeItem('rfjr-web-loginName')
+    localStorage.removeItem('rfjr-web-permissonList')
   }
 }
 
