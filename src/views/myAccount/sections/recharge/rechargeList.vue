@@ -14,7 +14,7 @@
         label="金额"
         show-overflow-tooltip>
         <template slot-scope="scope">
-          ￥{{scope.row.amount | formatThousands}}
+          ${{scope.row.amount | formatThousands}}
         </template>
       </el-table-column>
 

@@ -4,7 +4,9 @@
          style='font-size: 30px;margin-bottom: 30px;'>我要出金
     </div>
 
-    <div v-if='loading' v-loading='loading' style='padding: 30px;'>
+    <div v-if='loading'
+         v-loading='loading'
+         style='padding: 30px;'>
     </div>
     <div v-else>
       <div v-if='!realNameFlag'>请先进行实名认证</div>
@@ -28,30 +30,42 @@
           </div>
         </div>
         <div v-else>
-        <el-form status-icon
-                 style='margin-top: 30px;'
-                 ref="ruleForm2"
-                 label-width="140px"
-                 class="demo-ruleForm">
-          <el-form-item label="可用资金(USD)"
-                        prop="amount">
-            ￥{{availableBalance}}
-          </el-form-item>
-          <el-form-item label="出金金额"
-                        prop="amount">
-            <el-input type="number"
-                      placeholder="出金金额"
-                      v-model.number="amount"></el-input>
-          </el-form-item>
+          <el-form status-icon
+                   style='margin-top: 30px;'
+                   ref="ruleForm2"
+                   label-width="140px"
+                   class="demo-ruleForm">
+            <el-form-item label="可用资金(USD)"
+                          prop="amount">
+              ${{availableBalance}}
+            </el-form-item>
+            <el-form-item label="出金金额"
+                          prop="amount">
+              <el-input type="number"
+                        style='width: 200px'
+                        placeholder="输入出金金额"
+                        maxlength="10"
+                        v-model.number="amount"></el-input>
+              <span style='margin-left: 15px;'>￥{{rmbAmount}}</span>
+            </el-form-item>
+            <el-form-item label="">
+              <p style='margin-bottom: 0.4rem;'>
+                汇率：<span style='color: orangered;'>7.75</span>
+              </p>
+            </el-form-item>
 
-          <el-form-item>
+            <div class='notice-container '
+                 style='padding: 15px;background: rgb(248, 248, 248); margin-bottom: 15px;'>
+              <div style='margin-bottom: 10px;'>1.出金申请提交时间为交易日9:00-16:30，超过时段提交无效</div>
+              <div style='margin-bottom: 10px;'>2.出金办理时间为1个交易日内，一般2个小时内办理，以银行处理为准</div>
+            </div>
             <el-button type="primary"
+                       style='width: 100px'
                        @click="validForm">确定
             </el-button>
-          </el-form-item>
-        </el-form>
+          </el-form>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -68,19 +82,19 @@
         openAccountFlag: false,
         realNameFlag: false,
         loading: true,
-        showSuccess: false
+        showSuccess: false,
       }
     },
     created() {
       this.getToken()
     },
     computed: {
-      // btnDisabled() {
-      //   return isNaN(this.identityNo) || this.identityNo.length < 6 || this.identityNo.length > 16
-      // }
+      rmbAmount() {
+        return (this.amount * 7.75).toFixed(2)
+      }
     },
     methods: {
-      goRecord(){
+      goRecord() {
         this.$router.push('/myAccount/withdrawList')
       },
       getToken() {

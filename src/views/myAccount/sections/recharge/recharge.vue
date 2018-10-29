@@ -30,17 +30,21 @@
         </div>
         <div v-else>
           <el-form ref="form"
-                   label-width="80px">
-            <el-form-item label="入金金额"
+                   label-width="120px">
+            <el-form-item label="充值金额（￥）"
                           style='margin-bottom: 0;'>
-              <el-input-number v-model.number="amount"
-                               placeholder="输入入金金额"
-                               maxlength="10"
-                               controls-position="right"
-              ></el-input-number>
+              <el-input v-model.number="amount"
+                        style='width: 200px'
+                        type='number'
+                        placeholder="输入充值金额"
+                        maxlength="10"></el-input>
+              <span style='margin-left: 15px;'>(USD) : {{usdAmount}}</span>
             </el-form-item>
             <el-form-item label="">
-              <p style='margin-bottom: 0.4rem;'>汇率：<span style='color: orangered;'>7.75</span></p>
+              <p style='margin-bottom: 0.4rem;'>
+                汇率：<span style='color: orangered;'>7.75</span>
+                <span style='color: #aaa; margin-left: 15px;'>（入金时间：周一至周五9:00-24:00）</span>
+              </p>
             </el-form-item>
           </el-form>
 
@@ -68,6 +72,7 @@
                   <img src='./img/qrcode.png'
                        alt=''>
                 </div>
+                <div style='color: red; margin-top: 15px;'>(转账备注交易账号+姓名)</div>
               </div>
               <div v-if='type == "bank_card"'
                    class='bank-wrap'>
@@ -77,6 +82,14 @@
               </div>
             </div>
           </div>
+
+          <div class='notice-container '
+               style='padding: 15px;background: rgb(248, 248, 248); margin-bottom: 15px;'>
+            <div style='margin-bottom: 10px;'>1.支付时请务必填写页面显示附言，若没有填写则会导致入金无法到账，请及时联系客服人员，支付过程中请附言上您的交易账号，以便我们查询</div>
+            <div style='margin-bottom: 10px;'>2.转账后，发送转账明细截图至您的专属客户经理或本司客服</div>
+            <div style='margin-bottom: 10px;'>3.为确保资金及时到账，请选择“实时转账”，我方收款后，15分钟内办理</div>
+          </div>
+
           <el-button type="primary"
                      @click="validForm">我已经确认支付，确认
           </el-button>
@@ -102,8 +115,13 @@
     created() {
       this.getToken()
     },
+    computed: {
+      usdAmount() {
+        return (this.amount / 7.75).toFixed(2)
+      }
+    },
     methods: {
-      goRecord(){
+      goRecord() {
         this.$router.push('/myAccount/rechargeList')
       },
       selectAli() {
