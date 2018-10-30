@@ -17,6 +17,7 @@
       <div class='main-item'>
         <div class='number'>
           <count-to :start-val="0"
+                    :decimals='2'
                     :end-val="balance"
                     :duration="duration"
                     prefix='$ '
@@ -28,6 +29,7 @@
       <div class='main-item'>
         <div class='number'>
           <count-to :start-val="0"
+                    :decimals='2'
                     :end-val="availableBalance"
                     :duration="duration"
                     prefix='$ '
