@@ -15,12 +15,24 @@
 
     <div class='main-container'>
       <div class='main-item'>
-        <div class='number'>￥{{balance | formatThousands}}</div>
+        <div class='number'>
+          <count-to :start-val="0"
+                    :end-val="balance"
+                    :duration="duration"
+                    prefix='$ '
+                    class="card-panel-num"/>
+        </div>
         <div class='text'>资金(USD)</div>
       </div>
 
       <div class='main-item'>
-        <div class='number'>￥{{availableBalance | formatThousands}}</div>
+        <div class='number'>
+          <count-to :start-val="0"
+                    :end-val="availableBalance"
+                    :duration="duration"
+                    prefix='$ '
+                    class="card-panel-num"/>
+        </div>
         <div class='text'>可用资金(USD)</div>
       </div>
     </div>
@@ -29,10 +41,15 @@
 </template>
 
 <script>
+  import CountTo from 'vue-count-to'
 
   export default {
+    components: {
+      CountTo
+    },
     data() {
       return {
+        duration: 2000,
         availableBalance: 0,
         balance: 0,
         bindCardFlag: false,
@@ -116,6 +133,12 @@
 
     }
 
+    .card-panel-num {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: orangered;
+    }
     .main-container {
       display: flex;
       align-items: center;
@@ -125,9 +148,7 @@
       .main-item {
         margin-right: 50px;
         .number {
-          margin-bottom: 15px;
-          font-size: 20px;
-          color: orangered;
+
         }
         .text {
 
