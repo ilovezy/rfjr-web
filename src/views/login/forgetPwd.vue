@@ -77,14 +77,6 @@
     },
 
     methods: {
-      showPwd() {
-        if (this.passwordType === 'password') {
-          this.passwordType = ''
-        } else {
-          this.passwordType = 'password'
-        }
-      },
-
       validForm() {
         let loginForm = this.loginForm || {}
         if (!isValidUserName(loginForm.name)) {
