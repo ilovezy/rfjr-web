@@ -90,7 +90,7 @@
     },
     computed: {
       rmbAmount() {
-        return (this.amount * 7.75).toFixed(2)
+        return Number(parseFloat(this.amount * 7.75).toFixed(3).slice(0,-1))
       }
     },
     methods: {
