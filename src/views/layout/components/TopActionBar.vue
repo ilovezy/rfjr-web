@@ -6,7 +6,7 @@
       </div>
       <div class='right' v-if='userInfo.name'>
         <span>欢迎您: {{userInfo.name}}</span>
-        <span @click='doLogout' style='margin-left: 30px;cursor: pointer;'>登出</span>
+        <span @click='doLogout' style='margin-left: 30px;cursor: pointer;'>安全退出</span>
       </div>
       <div class='right' v-else>
         <router-link to='/login' class='item'>登录</router-link>
@@ -45,7 +45,7 @@
 
       doLogout(){
         USER.logout()
-        this.$message.success('登出成功,请重新登录')
+        this.$message.success('安全退出成功,请重新登录')
         setTimeout(() => {
           this.$router.push('/login')
           this.$store.dispatch('UPDATE_USER_INFO', {})

@@ -13,31 +13,31 @@
       <div class='code'></div>
     </div>
 
-    <div class='main-container'>
-      <div class='main-item'>
-        <div class='number'>
-          <count-to :start-val="0"
-                    :decimals='2'
-                    :end-val="balance"
-                    :duration="duration"
-                    prefix='$ '
-                    class="card-panel-num"/>
-        </div>
-        <div class='text'>资金(USD)</div>
-      </div>
+    <!--<div class='main-container'>-->
+      <!--<div class='main-item'>-->
+        <!--<div class='number'>-->
+          <!--<count-to :start-val="0"-->
+                    <!--:decimals='2'-->
+                    <!--:end-val="balance"-->
+                    <!--:duration="duration"-->
+                    <!--prefix='$ '-->
+                    <!--class="card-panel-num"/>-->
+        <!--</div>-->
+        <!--<div class='text'>资金(USD)</div>-->
+      <!--</div>-->
 
-      <div class='main-item'>
-        <div class='number'>
-          <count-to :start-val="0"
-                    :decimals='2'
-                    :end-val="availableBalance"
-                    :duration="duration"
-                    prefix='$ '
-                    class="card-panel-num"/>
-        </div>
-        <div class='text'>可用资金(USD)</div>
-      </div>
-    </div>
+      <!--<div class='main-item'>-->
+        <!--<div class='number'>-->
+          <!--<count-to :start-val="0"-->
+                    <!--:decimals='2'-->
+                    <!--:end-val="availableBalance"-->
+                    <!--:duration="duration"-->
+                    <!--prefix='$ '-->
+                    <!--class="card-panel-num"/>-->
+        <!--</div>-->
+        <!--<div class='text'>可用资金(USD)</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
   </div>
 </template>

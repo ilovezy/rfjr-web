@@ -41,11 +41,11 @@
       </el-form-item>
 
       <el-form-item prop="account"
-                    label='开户名'>
+                    label='交易账号'>
         <el-input name="account"
                   v-model="loginForm.account"
                   autoComplete="on"
-                  placeholder="请输入开户名"/>
+                  placeholder="请输入交易账号"/>
       </el-form-item>
 
       <el-button type="primary"
@@ -96,7 +96,7 @@
           return
         }
         if (!loginForm.account) {
-          this.$message.warning('请输入开户名');
+          this.$message.warning('请输入交易账号');
           return
         }
 

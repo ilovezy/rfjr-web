@@ -35,10 +35,10 @@
                    ref="ruleForm2"
                    label-width="140px"
                    class="demo-ruleForm">
-            <el-form-item label="可用资金(USD)"
-                          prop="amount">
-              ${{availableBalance}}
-            </el-form-item>
+            <!--<el-form-item label="可用资金(USD)"-->
+                          <!--prop="amount">-->
+              <!--${{availableBalance}}-->
+            <!--</el-form-item>-->
             <el-form-item label="出金金额"
                           prop="amount">
               <el-input type="number"
@@ -128,10 +128,10 @@
           this.$message.warning('请输入出金金额');
           return
         }
-        if (this.amount > this.availableBalance) {
-          this.$message.warning('可用资金不足');
-          return
-        }
+        // if (this.amount > this.availableBalance) {
+        //   this.$message.warning('可用资金不足');
+        //   return
+        // }
         this.doConfirm()
       },
 
