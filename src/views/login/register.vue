@@ -40,8 +40,9 @@
       </el-form-item>
 
       <el-form-item prop="inviteId">
-        <span class="svg-container">
-          <svg-icon icon-class="guide"/>
+        <span class="svg-container spe">
+          <!--<svg-icon icon-class="guide"/>-->
+          邀请码
         </span>
         <el-input name="inviteId"
                   v-model="inviteId"
@@ -299,7 +300,7 @@
     .el-input {
       display: inline-block;
       height: 47px;
-      width: 85%;
+      width: 65%;
       input {
         background: transparent;
         border: 0px;
@@ -360,11 +361,15 @@
       padding: 6px 5px 6px 15px;
       color: $dark_gray;
       vertical-align: middle;
-      width: 35px;
+      width: 65px;
       display: inline-block;
       font-size: 20px;
       &_login {
         font-size: 25px;
+      }
+
+      &.spe{
+        font-size: 14px;
       }
     }
     .title-container {
