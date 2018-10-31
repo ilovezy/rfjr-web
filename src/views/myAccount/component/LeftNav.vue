@@ -84,7 +84,7 @@
         display: block;
         padding: 15px;
         box-sizing: border-box;
-        background: #4fb7ea;
+        background: #ea494f;
         color: #fff;
       }
       .nav-list-item {
@@ -99,7 +99,7 @@
           margin-left: 15px;
         }
         &.router-link-exact-active {
-          border-left: 3px solid #4fb7ea;
+          border-left: 3px solid #ea494f;
         }
         &:hover {
           background: #e2e2e2;
