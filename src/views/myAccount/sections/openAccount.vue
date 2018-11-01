@@ -18,7 +18,7 @@
             <span class='iconfont icon-cces-Red-Iconfont-copy'></span>
             </div>
           </div>
-          <div class='title'>在线开户成功！</div>
+          <div class='title'>在线开户成功！实盘交易初始密码：888888</div>
         </div>
         <div v-else>
           <div class='info-wrap'>
@@ -258,11 +258,6 @@
       registerSuccess(res) {
         if (res) {
           this.$message.success('在线开户成功');
-          this.$notify({
-            title: '提示',
-            message: '实盘交易初始密码：888888',
-            duration: 0
-          });
           setTimeout(() => {
             this.showSuccess = true
           }, 1000)
