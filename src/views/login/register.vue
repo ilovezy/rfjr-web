@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="register-container">
 
     <el-form class="login-form"
              autoComplete="on"
@@ -296,7 +296,7 @@
   $cursor: #fff;
 
   /* reset element-ui css */
-  .login-container {
+  .register-container {
     .el-input {
       display: inline-block;
       height: 47px;
@@ -336,7 +336,7 @@
   $dark_gray: #889aa4;
   $light_gray: #eee;
 
-  .login-container {
+  .register-container {
     background-color: $bg;
     .login-form {
       width: 520px;

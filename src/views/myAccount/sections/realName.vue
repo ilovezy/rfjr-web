@@ -125,10 +125,10 @@
       registerSuccess(res) {
         if (res) {
           this.$message.success('实名认证成功');
+          this.showSuccess = true
           setTimeout(() => {
             // this.getToken()
-            this.showSuccess = true
-this.getAccount()
+            this.getAccount()
           }, 1000)
         }
       }

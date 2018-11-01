@@ -258,6 +258,11 @@
       registerSuccess(res) {
         if (res) {
           this.$message.success('在线开户成功');
+          this.$notify({
+            title: '提示',
+            message: '实盘交易初始密码：888888',
+            duration: 0
+          });
           setTimeout(() => {
             this.showSuccess = true
           }, 1000)
