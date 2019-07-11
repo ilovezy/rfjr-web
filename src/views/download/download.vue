@@ -27,9 +27,9 @@
       <div class='left-info'>
           <span class='iconfont icon-drgspingtairuanjianxitong373'
                 style='color: #4863ff'></span>
-        <div>星空联盟行情委托系统</div>
+        <div>新视窗交易系统</div>
       </div>
-      <a href="http://118.25.23.224/download/星空联盟行情委托系统.exe"
+      <a href="http://118.25.23.224/download/新视窗交易系统.exe"
          class="el-button el-button--primary el-button--large"
          style="margin-top: 30px;">点击下载</a>
     </div>
