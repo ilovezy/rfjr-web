@@ -74,15 +74,13 @@
                 </div>
               </div>
               <div v-if='type == "bank_card"'>
-                <div class='bank-wrap'>
-                  <div class='item'>户名：王萃</div>
-                  <div class='item'>开户银行：中国工商银行大关苑支行</div>
-                  <div class='item'>开户银行卡号：6212261202048343587</div>
-                </div>
-                <div class='bank-wrap'>
-                  <div class='item'>户名：王萃</div>
-                  <div class='item'>开户银行：中国光大银行杭州市庆春支行 </div>
-                  <div class='item'>开户银行卡号：6226622304284538 </div>
+                <div class='bank-wrap'
+                     :key='"bankCardList" + index'
+                     v-if='item.dataArr'
+                     v-for='(item,index) in bankCardList'>
+                  <div class='item'>户名：{{item.dataArr[1]}}</div>
+                  <div class='item'>开户银行：{{item.dataArr[0]}}</div>
+                  <div class='item'>开户银行卡号：{{item.dataArr[2]}}</div>
                 </div>
               </div>
               <div style='color: red; margin-top: 15px;'>(转账备注交易账号+姓名)</div>
@@ -116,7 +114,9 @@
         openAccountFlag: false,
         realNameFlag: false,
 
-        showSuccess: false
+        showSuccess: false,
+
+        bankCardList: []
       }
     },
     created() {
@@ -124,7 +124,7 @@
     },
     computed: {
       usdAmount() {
-        return Number(parseFloat(this.amount / 7.75).toFixed(3).slice(0,-1))
+        return Number(parseFloat(this.amount / 7.75).toFixed(3).slice(0, -1))
       }
     },
     methods: {
@@ -141,6 +141,7 @@
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
+          this.getBankCardList()
         } else {
           USER.logout()
           this.$message.warning('请重新登录')
@@ -161,6 +162,19 @@
           this.account = res.account
           this.$store.dispatch('UPDATE_USER_INFO', res)
 
+        })
+      },
+
+      getBankCardList() {
+        AXIOS.post('/security/api/recharge/card').then(res => {
+          if (isLongArr(res)) {
+            res.map((item, index) => {
+              if (item.value) {
+                item.dataArr = item.value.split(',')
+              }
+            })
+          }
+          this.bankCardList = res || []
         })
       },
 
@@ -212,6 +226,7 @@
       .pay-way-container {
         display: flex;
         padding-bottom: 15px;
+
         .alipay-item,
         .bank-item {
           cursor: pointer;
@@ -223,10 +238,12 @@
           margin-right: 20px;
           padding-left: 15px;
           transition: all 0.4s ease;
+
           &.active {
             border: 1px solid #1296db;
           }
         }
+
         .alipay-item {
           .ali-icon {
             color: #1296db;
@@ -235,6 +252,7 @@
             margin-right: 10px;
           }
         }
+
         .bank-item {
           .bank-icon {
             display: inline-block;
@@ -247,7 +265,8 @@
     }
 
     .info-container {
-      height: 200px;
+      min-height: 200px;
+
       .qrcode {
         width: 150px;
         height: 150px;
@@ -255,10 +274,10 @@
 
       .bank-wrap {
         display: inline-block;
-        padding: 15px; 
+        padding: 15px;
         margin-right: 30px;
         border: 1px solid #aaa;
-        border-radius:  10px;
+        border-radius: 10px;
         margin-bottom: 0.3rem;
         font-size: 20px;
         line-height: 30px;
