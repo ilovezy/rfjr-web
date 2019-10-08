@@ -55,9 +55,9 @@
             </el-form-item>
 
             <div class='notice-container '
-                 style='padding: 15px;background: rgb(248, 248, 248); margin-bottom: 15px;'>
-              <div style='margin-bottom: 10px;'>1.出金申请提交时间为交易日9:00-16:30，超过时段提交无效</div>
-              <div style='margin-bottom: 10px;'>2.出金办理时间为1个交易日内，一般2个小时内办理，以银行处理为准</div>
+                 style='padding: 15px; line-height: 30px;background: rgb(248, 248, 248); margin-bottom: 15px;font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif; '
+                 v-html="context"
+            >
             </div>
             <el-button type="primary"
                        style='width: 100px'
@@ -83,6 +83,7 @@
         realNameFlag: false,
         loading: true,
         showSuccess: false,
+        context: ''
       }
     },
     created() {
@@ -100,6 +101,7 @@
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
+          this.getContext()
         } else {
           USER.logout()
           this.$message.warning('请重新登录')
@@ -120,6 +122,12 @@
           this.account = res.account
           this.$store.dispatch('UPDATE_USER_INFO', res)
 
+        })
+      },
+
+      getContext(){
+        AXIOS.post('security/api/document/withdraw').then(res => {
+          this.context = res.value || ''
         })
       },
 

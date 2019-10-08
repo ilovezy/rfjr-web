@@ -1,6 +1,13 @@
 <template>
   <div class="login-container">
-    <h1 style='text-align: center;'>日发金融合约明细</h1>
+    <h1 style='text-align: center;'>
+      日发金融合约明细
+    </h1>
+    <div style="text-align: center;">
+      <div class="spe-btn el-button el-button--primary el-button--large" @click="downLoadNewContrast">
+        下载最新合约明细
+      </div>
+    </div>
     <div style='padding: 15px 50px;'>
       <table  class='el-table el-table--fit el-table--border el-table--enable-row-hover el-table--enable-row-transition'>
    <col width="90" class="xl66" style='mso-width-source:userset;mso-width-alt:2633;'/>
@@ -363,7 +370,12 @@
    </tr>
    <tr height="24" style='height:14.40pt;'>
     <td class="xl78 spe-text" height="144.00" rowspan="6" style='height:86.40pt;' x:str>其他说明</td>
-    <td class="xl79 spe-text" colspan="12" rowspan="6" style='' x:str>1、出入金固定汇率7.75（1美元=7.75人民币）<br/>2、每月第一周星期五非农数据（夏令时：20点15分---20点45分）；（冬令时21点15分---21点45分）30分钟内外汇期货类产品禁止开仓，提前开仓的保证金需提高至1500美金/手才能持仓过非农（如遇美国节假日非农数据顺延至下一周星期五）<br/>3、隔夜保证金相同的品种隔夜，如果隔夜保证金不足全部隔夜，系统会全部平仓。（例：原油和欧元各持仓1手，账户资金只够隔1手，系统会全部平仓）<br/>4、如有调整，以公司公告为准</td>
+    <td class="xl79 spe-text" colspan="12" rowspan="6" style='' x:str>
+      1、出入金固定汇率7.75（1美元=7.75人民币）<br>
+      2、每月第一周星期五非农数据（夏令时：20点15分---20点45分）；（冬令时21点15分---21点45分）30分钟内外汇期货类产品禁止开仓，提前开仓的保证金需提高至1500美金/手才能持仓过非农，30分钟内德指禁止开仓，提前开仓的保证金需提高至2500美金/手才能持仓过非农（如遇美国节假日非农数据顺延至下一周星期五）<br>
+      3、隔夜保证金相同的品种隔夜，如果隔夜保证金不足全部隔夜，系统会全部平仓。（例：原油和欧元各持仓1手，账户资金只够隔1手，系统会全部平仓）<br>
+      4、如有调整，以公司公告为准
+    </td>
    </tr>
    <tr height="24" style='height:14.40pt;'/>
    <tr height="24" style='height:14.40pt;'/>
@@ -375,6 +387,7 @@
 </template>
 
 <script>
+  import AXIOS from '../../global/Fetch';
   export default {
     name: 'login',
     data() {
@@ -383,7 +396,14 @@
     },
     created() {
     },
-    methods: {}
+    methods: {
+      downLoadNewContrast(){
+        AXIOS.post('/security/api/downloadUrl/contractDetail', {}).then(res => {
+          location.href =  res.value
+        }).catch(() => {
+        })
+      }
+    }
   }
 </script>
 

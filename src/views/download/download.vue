@@ -6,7 +6,7 @@
         <div>苹果</div>
       </div>
       <span class='qrcode-wrap'>
-          <img src='./img/ios.png'
+          <img :src='iosUrl'
                alt=''>
         </span>
     </div>
@@ -17,7 +17,7 @@
         <div>安卓</div>
       </div>
       <span class='qrcode-wrap'>
-            <img src='./img/android.jpg'
+            <img :src='androidUrl'
                  alt=''>
           </span>
       <p>安卓版：使用手机浏览器扫描二维码（不支持微信扫描）</p>
@@ -29,7 +29,7 @@
                 style='color: #4863ff'></span>
         <div>新视窗交易系统</div>
       </div>
-      <a href="http://118.25.23.224/download/新视窗交易系统.exe"
+      <a :href="xscUrl"
          class="el-button el-button--primary el-button--large"
          style="margin-top: 30px;">点击下载</a>
     </div>
@@ -40,9 +40,33 @@
 
   export default {
     data() {
-      return {}
+      return {
+        androidUrl: '',
+        iosUrl: '',
+        xscUrl: '',
+      }
+    },
+    created() {
+      this.getDownloadInfo()
+    },
+    methods: {
+      getDownloadInfo() {
+        AXIOS.get('/security/api/download').then(res => {
+          let arr = res || []
+          arr.map((item, index) => {
+            if (item.key == "ANDROID") {
+              this.androidUrl = item.value
+            }
+            if (item.key == "IOS") {
+              this.iosUrl = item.value
+            }
+            if (item.key == "XSC_EXE") {
+              this.xscUrl = item.value
+            }
+          })
+        })
+      },
     }
-
   }
 </script>
 
