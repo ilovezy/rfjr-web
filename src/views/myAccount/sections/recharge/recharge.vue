@@ -69,7 +69,7 @@
             <div class='info-container'>
               <div v-if='type == "alipay"'>
                 <div class='qrcode'>
-                  <img src='./img/qrcode.png'
+                  <img :src='aliPayUrl'
                        alt=''>
                 </div>
               </div>
@@ -116,7 +116,8 @@
 
         showSuccess: false,
 
-        bankCardList: []
+        bankCardList: [],
+        aliPayUrl: '',
       }
     },
     created() {
@@ -141,6 +142,7 @@
       getToken() {
         if (USER.isLogin()) {
           this.getAccount()
+          this.getDownloadInfo()
           this.getBankCardList()
         } else {
           USER.logout()
@@ -149,6 +151,16 @@
             this.$router.push('/login')
           }, 1000)
         }
+      },
+      getDownloadInfo() {
+        AXIOS.get('/security/api/download').then(res => {
+          let arr = res || []
+          arr.map((item, index) => {
+            if (item.key == "ALIPAY") {
+              this.aliPayUrl = item.value
+            }
+          })
+        })
       },
       getAccount() {
         AXIOS.post('/api/member/center').then(res => {
