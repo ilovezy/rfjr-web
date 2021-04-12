@@ -27,7 +27,7 @@
       <div class='left-info'>
           <span class='iconfont icon-drgspingtairuanjianxitong373'
                 style='color: #4863ff'></span>
-        <div>新视窗交易系统</div>
+        <div>电脑端交易系统</div>
       </div>
       <a :href="xscUrl"
          class="el-button el-button--primary el-button--large"
