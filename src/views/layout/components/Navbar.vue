@@ -3,31 +3,31 @@
     <div class='navbar-wrap global-container'>
       <div class='logo' style='height: 80px'>
         <img src='./img/logo.png'
-             style='height: auto; transform: scale(0.8);position: relative;left: -55px;'
+             style='height: auto;transform: scale(0.5);position: relative;left: -100px;top: -10px;'
         alt=''>
-        <!--日发金融-->
+        <!--朗潤金融-->
       </div>
 
-      <div class='nav-list'>
-        <router-link class='nav-list-item'
-                     to="/myAccount">
-          个人中心
-        </router-link>
-        <router-link class='nav-list-item'
-                     to="/dealDetail">
-          日发金融合约明细
-        </router-link>      <router-link class='nav-list-item'
-                     to="/download">
-          软件下载
-        </router-link>
-        <!--<router-link class='nav-list-item item-my-account'-->
-      </div>
+<!--      <div class='nav-list'>-->
+<!--        <router-link class='nav-list-item'-->
+<!--                     to="/myAccount">-->
+<!--          个人中心-->
+<!--        </router-link>-->
+<!--        <router-link class='nav-list-item'-->
+<!--                     to="/dealDetail">-->
+<!--          朗潤金融合约明细-->
+<!--        </router-link>      <router-link class='nav-list-item'-->
+<!--                     to="/download">-->
+<!--          软件下载-->
+<!--        </router-link>-->
+<!--        &lt;!&ndash;<router-link class='nav-list-item item-my-account'&ndash;&gt;-->
+<!--      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {},
@@ -72,13 +72,13 @@
           box-sizing: border-box;
           height: 100%;
           &.router-link-exact-active {
-            border-bottom: 3px solid #ea494f;
+            border-bottom: 3px solid #428bca;
           }
 
           &.item-my-account {
             margin-left: 80px;
             &.router-link-active {
-              border-bottom: 3px solid #ea494f;
+              border-bottom: 3px solid #428bca;
             }
           }
         }

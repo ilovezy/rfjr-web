@@ -25,14 +25,14 @@
       </router-link>
 
       <div class='nav-list-title'>我的资金</div>
-      <router-link class='nav-list-item'
-                   to="/myAccount/recharge">
-        我要入金
-      </router-link>
-      <router-link class='nav-list-item'
-                   to="/myAccount/rechargeList">
-        入金记录
-      </router-link>
+<!--      <router-link class='nav-list-item'-->
+<!--                   to="/myAccount/recharge">-->
+<!--        我要入金-->
+<!--      </router-link>-->
+<!--      <router-link class='nav-list-item'-->
+<!--                   to="/myAccount/rechargeList">-->
+<!--        入金记录-->
+<!--      </router-link>-->
       <router-link class='nav-list-item'
                    to="/myAccount/withdraw">
         我要出金
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'leftNav',
     computed: {
@@ -84,7 +83,7 @@
         display: block;
         padding: 15px;
         box-sizing: border-box;
-        background: #ea494f;
+        background: #428bca;
         color: #fff;
       }
       .nav-list-item {
@@ -99,7 +98,7 @@
           margin-left: 15px;
         }
         &.router-link-exact-active {
-          border-left: 3px solid #ea494f;
+          border-left: 3px solid #428bca;
         }
         &:hover {
           background: #e2e2e2;

@@ -17,16 +17,16 @@ export const constantRouterMap = [
       path: '',
       component: () => import('@/views/login/index'),
       name: 'loginPage',
-      meta: { title: '登录'}
+      meta: { title: '登录' }
     }]
-  },  {
+  }, {
     path: '/forgetPwd',
     component: Layout,
     children: [{
       path: '',
       component: () => import('@/views/login/forgetPwd'),
       name: 'forgetPwdPage',
-      meta: { title: '忘记密码'}
+      meta: { title: '忘记密码' }
     }]
   }, {
     path: '/register',
@@ -35,25 +35,25 @@ export const constantRouterMap = [
       path: '',
       component: () => import('@/views/login/register'),
       name: 'registerPage',
-      meta: { title: '注册'}
+      meta: { title: '注册' }
     }]
-  },{
+  }, {
     path: '/download',
     component: Layout,
     children: [{
       path: '',
       component: () => import('@/views/download/download'),
       name: 'download',
-      meta: { title: '软件下载'}
+      meta: { title: '软件下载' }
     }]
-  },{
+  }, {
     path: '/dealDetail',
     component: Layout,
     children: [{
       path: '',
       component: () => import('@/views/login/dealDetail'),
       name: 'dealDetail',
-      meta: { title: '日发金融合约明细'}
+      meta: { title: '朗潤金融合约明细' }
     }]
   },
 
@@ -66,34 +66,34 @@ export const constantRouterMap = [
     redirect: 'index',
     children: [{
       path: 'index',
-      component: () => import('@/views/myAccount/myAccountPage'),
+      component: () => import('@/views/login/index'),
       name: 'index',
-      meta: { title: '个人中心'}
+      meta: { title: '登录' }
     }, {
       path: 'infoDisclosure',
       component: () => import('@/views/infoDisclosure/infoDisclosurePage'),
       name: 'infoDisclosure',
-      meta: { title: '信息披露'}
+      meta: { title: '信息披露' }
     }, {
       path: 'safetyGuarantee',
       component: () => import('@/views/safetyGuarantee/safetyGuaranteePage'),
       name: 'safetyGuarantee',
-      meta: { title: '安全保障'}
+      meta: { title: '安全保障' }
     }, {
       path: 'helpCenter',
       component: () => import('@/views/helpCenter/helpCenterPage'),
       name: 'helpCenter',
-      meta: { title: '帮助中心'}
+      meta: { title: '帮助中心' }
     }, {
       path: 'inviteFriend',
       component: () => import('@/views/inviteFriend/inviteFriendPage'),
       name: 'inviteFriend',
-      meta: { title: '邀请好友'}
+      meta: { title: '邀请好友' }
     }]
-  },
+  }
 ]
 
-let BaiscRouter =  [
+const BaiscRouter = [
   {
     path: '/icon',
     component: Layout,
@@ -137,7 +137,7 @@ let BaiscRouter =  [
 export const asyncRouterMap = [
   ...myAccountRouter,
   ...productRouter,
-  ...BaiscRouter,
+  ...BaiscRouter
 ]
 
 export default new Router({

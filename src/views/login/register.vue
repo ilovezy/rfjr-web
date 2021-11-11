@@ -79,7 +79,7 @@
         <p style='margin-top: 0.6rem;margin-bottom: 0.5rem;'>期市有风险，投资需谨慎</p>
         <div class="protocol-info protocal-main">
           <p>
-            No.1、关于平台：日发金融是为用户提供系统软件服务、账户资金和交易风险保证金监督及交易信息咨询的第三方服务机构。用户根据参与规则，通过日发金融官方网站注册帐号，熟悉认可《交易规则》签订《服务协议书》，并支付交易风险保证金，获取出资方免息授信期货实盘操
+            No.1、关于平台：朗潤金融是为用户提供系统软件服务、账户资金和交易风险保证金监督及交易信息咨询的第三方服务机构。用户根据参与规则，通过朗潤金融官方网站注册帐号，熟悉认可《交易规则》签订《服务协议书》，并支付交易风险保证金，获取出资方免息授信期货实盘操
             作权，进行商品期货和金融期货投资，获取操作账户的收益并承担账户亏损。</p>
           <p> No.2、实盘申请时间：交易日 24 小时均可通过本平台申请实盘交易账号，实盘账号申请完毕后登陆交易系统入金充值后即可进行国际期货投资交易。</p>
           <p> No.3、充值：交易资金以美金为基础货币（简称：基币），基币只可用于交易和提现；</p>
@@ -178,7 +178,7 @@
             仅无法认定更无力承担，用户将不得不承担由此造成的损失。
           </p>
           <p> No.21、参与规则完善申明
-            本规则解释权归属日发金融，同时金发金融保留对参与规则进行必要的变更和完善，并力求
+            本规则解释权归属朗潤金融，同时金发金融保留对参与规则进行必要的变更和完善，并力求
             通过网站提前给予发布。</p>
           <p> 期市有风险，投资需谨慎！</p>
         </div>
@@ -216,11 +216,11 @@
       return {
         loginForm: {
           loginName: window.isDev ? 18768143328 : '',
-          password: window.isDev ? '1qaz2wsx' : '',
+          password: window.isDev ? '1qaz2wsx' : ''
         },
         loginRules: {
-          loginName: [{required: true, trigger: 'blur', validator: validateUsername}],
-          password: [{required: true, trigger: 'blur', validator: validatePassword}]
+          loginName: [{ required: true, trigger: 'blur', validator: validateUsername }],
+          password: [{ required: true, trigger: 'blur', validator: validatePassword }]
         },
         passwordType: 'password',
         loading: false,
@@ -235,7 +235,7 @@
     },
     methods: {
       setInviteId() {
-        let query = this.$route.query || {}
+        const query = this.$route.query || {}
         this.inviteId = query.inviteId || ''
       },
       showPwd() {
@@ -257,16 +257,16 @@
               AXIOS.post('/security/api/member/register', {
                 loginName: loginName,
                 password: password,
-                inviteId: self.inviteId,
+                inviteId: self.inviteId
               }).then(res => {
                 USER.setToken(res)
                 USER.setLoginName(loginName)
                 self.$message({
                   type: 'success',
-                  message: '注册成功',
+                  message: '注册成功'
                 })
                 self.loading = false
-                self.$router.push({path: '/myAccount'})
+                self.$router.push({ path: '/myAccount' })
               }).catch(() => {
                 self.loading = false
               })
@@ -277,10 +277,9 @@
         } else {
           self.$message({
             type: 'warning',
-            message: '没有邀请码不能注册',
+            message: '没有邀请码不能注册'
           })
         }
-
       }
     }
   }

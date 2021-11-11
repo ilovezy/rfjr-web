@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <h1 style='text-align: center;'>
-      日发金融合约明细
+      朗潤金融合约明细
     </h1>
     <div style="text-align: center;">
       <div class="spe-btn el-button el-button--primary el-button--large" @click="downLoadNewContrast">
@@ -387,19 +387,18 @@
 </template>
 
 <script>
-  import AXIOS from '../../global/Fetch';
-  export default {
+  import AXIOS from '../../global/Fetch'
+export default {
     name: 'login',
     data() {
-
       return {}
     },
     created() {
     },
     methods: {
-      downLoadNewContrast(){
+      downLoadNewContrast() {
         AXIOS.post('/security/api/downloadUrl/contractDetail', {}).then(res => {
-          location.href =  res.value
+          location.href = res.value
         }).catch(() => {
         })
       }
