@@ -3,7 +3,7 @@
     <top-action-bar></top-action-bar>
     <navbar></navbar>
     <app-main></app-main>
-    <!--<app-footer></app-footer>-->
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -32,5 +32,7 @@
     position: relative;
     height: 100%;
     width: 100%;
+    padding-bottom: 60px;
+    box-sizing: border-box;
   }
 </style>
